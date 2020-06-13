@@ -220,6 +220,102 @@
             
 
   
+    <article id="post-虚幻四教程第一章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/06/13/%E8%99%9A%E5%B9%BB%E5%9B%9B%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E7%AB%A0/" target="_blank">虚幻四教程第一章</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/06/13/%E8%99%9A%E5%B9%BB%E5%9B%9B%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="archive-article-date">
+        <time datetime="2020-06-13T14:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="ue4-c-是什么？"><a href="#ue4-c-是什么？" class="headerlink" title="ue4 c++ 是什么？"></a>ue4 c++ 是什么？</h2><p>ue4 c++ 是一种魔改版的c++。实现了一些原生c++中没有的功能。比如<strong><em>代理</em></strong>，<strong><em>事件</em></strong>，<strong><em>派发</em></strong>，<strong><em>反射</em></strong> 等机制。</p>
+<p>可以说，ue4 c++比原生c++更加强大且更加容易使用。</p>
+<h2 id="ue4-c-的常用宏"><a href="#ue4-c-的常用宏" class="headerlink" title="ue4 c++ 的常用宏"></a>ue4 c++ 的常用宏</h2><h3 id="1-UPROPERTY（）"><a href="#1-UPROPERTY（）" class="headerlink" title="1.    UPROPERTY（）"></a>1.    UPROPERTY（）</h3><hr>
+<p>UPROPERTY（）中u是前缀，property便是该宏对自身功能的描述，即该宏能够描述变量的属性。</p>
+<p>例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPEROPERTY(EditAnyWhere,BlueprintReadWrite,category = Essential)</span><br><span class="line">    <span class="keyword">int</span> Health = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们来详解上诉宏参数的具体意义：</p>
+<p><strong>EditAnywhere</strong> 表明health这个变量在虚幻四的编辑器中能够在实时被改变默认值</p>
+<p><strong>BlueprintReadWrite</strong> 表明health这个变量在虚幻四的蓝图中能够读取和写入</p>
+<p><strong>category</strong> 表示给变量分组，方便变量的查看和修改 </p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ue4</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/06/13/%E8%99%9A%E5%B9%BB%E5%9B%9B%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E7%AB%A0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -417,6 +513,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ue4</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
