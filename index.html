@@ -249,31 +249,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <a id="more"></a>)
-
-<h2 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h2><h4 id="使用断点调试："><a href="#使用断点调试：" class="headerlink" title="使用断点调试："></a>使用断点调试：</h4><p>这个没什么好说的。</p>
-<h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="打印调试文本："><a href="#打印调试文本：" class="headerlink" title="打印调试文本："></a>打印调试文本：</h4><p>虚幻四中打印文本有两种方式：</p>
-<hr>
-<p>1.打印在屏幕窗口：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UKismetSystemLibrary::PrintString(<span class="keyword">this</span>, TEXT(<span class="string">"Successed Produce NPC:%s"</span>),*produceTip);</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GEngine-&gt;AddOnScreenDebugMessage(<span class="number">-1</span>, <span class="number">5.f</span>, FColor::Green, FString::Printf(TEXT(<span class="string">"Successed Produce NPC : %s"</span>), *produceTip));</span><br><span class="line"><span class="comment">//上述打印的文本是c语言风格的</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.打印在输出日志</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UE_LOG(LogTemp, Warning, TEXT(<span class="string">"Successed Produce NPC:%s"</span>), getName().ToString());</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
+    <p>1</p>
+    
+    <a class="article-more-a" href="/2020/06/18/UE4%20%E5%B8%B8%E7%94%A8%E7%9A%84debug%E6%96%B9%E5%BC%8F/#more">more >></a>
+    
     
 
     
