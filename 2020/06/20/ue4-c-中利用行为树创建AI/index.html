@@ -18,9 +18,11 @@
 <meta property="og:description" content="下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-19T17:39:26.000Z">
-<meta property="article:modified_time" content="2020-06-20T13:19:12.425Z">
+<meta property="article:modified_time" content="2020-06-20T13:24:24.855Z">
 <meta property="article:author" content="诌言呓语">
 <meta property="article:tag" content="ue4">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="诌言呓语" type="application/atom+xml">
@@ -249,7 +251,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">722字</span>
+      <span class="post-count">699字</span>
     </span>
   </span>
 
@@ -271,14 +273,13 @@
     
     <h5 id="下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点"><a href="#下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点" class="headerlink" title="下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点"></a>下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点</h5><a id="more"></a>
 
-<h3 id="一-在build-cs中添加modular"><a href="#一-在build-cs中添加modular" class="headerlink" title="一    在build.cs中添加modular"></a>一    在build.cs中添加modular</h3><p>在yourProject.build.cs[^路径说明]中添加两个模块，”AIModule”和 “GameplayTasks”。</p>
-<p>[^路径说明]：yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs</p>
+<h3 id="一-在build-cs中添加modular"><a href="#一-在build-cs中添加modular" class="headerlink" title="一    在build.cs中添加modular"></a>一    在build.cs中添加modular</h3><p>在yourProject.build.cs<a href="yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs">^路径说明</a>中添加两个模块，”AIModule”和 “GameplayTasks”。</p>
 <p>例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> UnrealBuildTool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyProject</span> :</span> ModuleRules</span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyProject</span><span class="params">(ReadOnlyTargetRules Target)</span> : <span class="title">base</span><span class="params">(Target)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;</span><br><span class="line">        <span class="comment">//========================这一行就是你要添加的位置===========================//</span></span><br><span class="line">		PublicDependencyModuleNames.AddRange(<span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">"Core"</span>, <span class="string">"CoreUObject"</span>, <span class="string">"Engine"</span>, <span class="string">"InputCore"</span>, <span class="string">"AIModule"</span>, <span class="string">"GameplayTasks"</span> &#125;);</span><br><span class="line"></span><br><span class="line">		PrivateDependencyModuleNames.AddRange(<span class="keyword">new</span> <span class="built_in">string</span>[] &#123;  &#125;);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong><em>不这样做的话，使用和AI相关的代码后，编译就会报错</em></strong></p>
+<p><strong>不这样做的话，使用和AI相关的代码后，编译就会报错</strong></p>
 <h3 id="二-创建你的AI-Controller"><a href="#二-创建你的AI-Controller" class="headerlink" title="二    创建你的AI Controller"></a>二    创建你的AI Controller</h3><p>继承AIController的一个类，没什么好说的</p>
-<h4 id="三-在要使用AI的角色类中定义行为树"><a href="#三-在要使用AI的角色类中定义行为树" class="headerlink" title="三    在要使用AI的角色类中定义行为树"></a>三    在要使用AI的角色类中定义行为树</h4><p>例如：</p>
+<h3 id="三-在要使用AI的角色类中定义行为树"><a href="#三-在要使用AI的角色类中定义行为树" class="headerlink" title="三    在要使用AI的角色类中定义行为树"></a>三    在要使用AI的角色类中定义行为树</h3><p>例如：</p>
 <p><strong>头文件</strong>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Fill out your copyright notice in the Description page of Project Settings.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CoreMinimal.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Character_Base.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BehaviorTree/BehaviorTree.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BehaviorTree/BehaviorTreeComponent.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BehaviorTree/BlackboardComponent.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Enemy_Base.generated.h"</span></span></span><br><span class="line"></span><br><span class="line">UCLASS()</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MYPROJECT_API</span> <span class="title">AEnemy_Base</span> :</span> <span class="keyword">public</span> ACharacter_Base</span><br><span class="line">&#123;</span><br><span class="line">	GENERATED_BODY()</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">//===========================定义了一个BehaviorTree===========================//</span></span><br><span class="line">	UPROPERTY(EditAnywhere, BlueprintReadWrite)</span><br><span class="line">		UBehaviorTree* BehaviorTree;</span><br><span class="line">    <span class="comment">//========================================================================//</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BeginPlay</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	AEnemy_Base();</span><br><span class="line">    </span><br><span class="line">	<span class="function">UBehaviorTree* <span class="title">GetBehaviorTree</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> BehaviorTree; &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Tick</span><span class="params">(<span class="keyword">float</span> Delta)</span> <span class="keyword">override</span></span>;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -287,8 +288,8 @@
 
 
 
-<h4 id="四-创建你的行为树和黑板"><a href="#四-创建你的行为树和黑板" class="headerlink" title="四    创建你的行为树和黑板"></a>四    创建你的行为树和黑板</h4><p>在编辑器页面中就可以创建这两者，然后自定义你的行为树和黑板，然后将你的AI角色指定行为树</p>
-<h4 id="五-自定义你的行为树任务（BTTaskNode）"><a href="#五-自定义你的行为树任务（BTTaskNode）" class="headerlink" title="五    自定义你的行为树任务（BTTaskNode）"></a>五    自定义你的行为树任务（BTTaskNode）</h4><p>当然，你可以直接用蓝图创建。</p>
+<h3 id="四-创建你的行为树和黑板"><a href="#四-创建你的行为树和黑板" class="headerlink" title="四    创建你的行为树和黑板"></a>四    创建你的行为树和黑板</h3><p>在编辑器页面中就可以创建这两者，然后自定义你的行为树和黑板，然后将你的AI角色指定行为树</p>
+<h3 id="五-自定义你的行为树任务（BTTaskNode）"><a href="#五-自定义你的行为树任务（BTTaskNode）" class="headerlink" title="五    自定义你的行为树任务（BTTaskNode）"></a>五    自定义你的行为树任务（BTTaskNode）</h3><p>当然，你可以直接用蓝图创建。</p>
 <p>若要在c++中创建，步骤如下·</p>
 <ul>
 <li>创建你的任务类，父类为BTTaskNode；</li>
@@ -314,6 +315,7 @@
 <p>如果要使用任务蓝图中的finishTask函数，你可以将你的行为树任务的父类改为BTTask_BlueprintBase，不过官方并不建议使用这种方式，详情请看BTTask_BlueprintBase的注解</p>
 </blockquote>
 </blockquote>
+<p><a href="yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs">^路径说明</a>: </p>
 
     
 
@@ -351,6 +353,14 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ue4</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
         		</li>
       		
 		</ul>
@@ -450,7 +460,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点"><span class="toc-number">1.</span> <span class="toc-text">下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一-在build-cs中添加modular"><span class="toc-number"></span> <span class="toc-text">一    在build.cs中添加modular</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-创建你的AI-Controller"><span class="toc-number"></span> <span class="toc-text">二    创建你的AI Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三-在要使用AI的角色类中定义行为树"><span class="toc-number"></span> <span class="toc-text">三    在要使用AI的角色类中定义行为树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四-创建你的行为树和黑板"><span class="toc-number"></span> <span class="toc-text">四    创建你的行为树和黑板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五-自定义你的行为树任务（BTTaskNode）"><span class="toc-number"></span> <span class="toc-text">五    自定义你的行为树任务（BTTaskNode）</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点"><span class="toc-number">1.</span> <span class="toc-text">下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一-在build-cs中添加modular"><span class="toc-number"></span> <span class="toc-text">一    在build.cs中添加modular</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-创建你的AI-Controller"><span class="toc-number"></span> <span class="toc-text">二    创建你的AI Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-在要使用AI的角色类中定义行为树"><span class="toc-number"></span> <span class="toc-text">三    在要使用AI的角色类中定义行为树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-创建你的行为树和黑板"><span class="toc-number"></span> <span class="toc-text">四    创建你的行为树和黑板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-自定义你的行为树任务（BTTaskNode）"><span class="toc-number"></span> <span class="toc-text">五    自定义你的行为树任务（BTTaskNode）</span></a>
                     </div>
                 </span>
             </div>
@@ -619,6 +629,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UE4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>
