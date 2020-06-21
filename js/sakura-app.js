@@ -1105,7 +1105,7 @@ var home = location.href,
           appId: mashiro_option.v_appId,
           appKey: mashiro_option.v_appKey,
           path: window.location.pathname,
-          placeholder: '留下你的邮箱，收到回复时就会发邮件给你哦！'
+          placeholder: '你是我一生只会遇见一次的惊喜 ...'
         })
       }
     },
