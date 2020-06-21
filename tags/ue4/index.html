@@ -66,7 +66,7 @@
     /*End of Initial Variables*/
   </script>
   <script type="text/javascript">
-    var bg = "https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(0).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/cungudafa/cdn@2.0.9/img/cover/(7).jpg.webp".split(",");
+    var bg = "http://p1.qhimg.com/bdr/__100/t013d430ec40fc34e0a.jpg,http://p6.qhimg.com/bdr/__100/t0199d94f800e92c0aa.jpg,http://p8.qhimg.com/bdr/__100/t013c5966bae89f77f7.jpg,http://p0.qhimg.com/bdm/1600_900_85/t01cf7a37302976adac.jpg,http://p9.qhimg.com/bdr/__100/t01cd086f4f866b4571.jpg,http://p5.qhimg.com/bdm/1600_900_85/t01aaef5751c6f5543c.jpg,http://p5.qhimg.com/bdr/__100/t017d37d260eb126b08.jpg,http://p5.qhimg.com/bdm/1600_900_85/t010c6d28136d1832a3.jpg,https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1592761686594&amp;di=018f3cc42c8d91ffc0861c4d4ceb1c18&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-01-15%2F5a5c3c3368555.jpg,https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1592761686597&amp;di=394fd4f1489a4d71fd7f02a692d03b4c&amp;imgtype=0&amp;src=http%3A%2F%2Fapp.yofus.com%2Fimages%2Fupload%2FFile%2Fjiuzhaigou.jpg,https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1592761809089&amp;di=d3ca3e0c8fb80a2da95811ad44b1750b&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170409%2F67ecf76c40b84509b39d4a7c05430e68_th.jpeg".split(",");
     var bgindex = Math.floor(Math.random()*bg.length);
     if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
       alert('朋友，IE浏览器未适配哦~');
@@ -698,7 +698,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -710,10 +710,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
