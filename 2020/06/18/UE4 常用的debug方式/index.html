@@ -36,8 +36,8 @@
   mashiro_option.site_name = "诌言呓语";
   mashiro_option.author_name = "呓语";
   mashiro_option.site_url = "https://somniloquy.cn";
-  mashiro_option.v_appId = "EJLzCAoyruzrz9o9znVPB8x3-MdYXbMMI";
-  mashiro_option.v_appKey = "kAKcnoTeMgI0YcbxEdVOWDj6";
+  mashiro_option.v_appId = "";
+  mashiro_option.v_appKey = "";
   mashiro_option.mathjax = "0";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
@@ -461,6 +461,21 @@
         
       </section>
       
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "",
+        appKey: "",
+        path: window.location.pathname,
+        placeholder: ""
+      })
+  }
+</script>
+
 
 
       <section class="author-profile">
