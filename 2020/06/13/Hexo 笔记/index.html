@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -411,7 +411,7 @@
 <p>hexo g        *生成文件</p>
 <p>hexo d        *配置文件到github上</p>
 <p>hexo s        * 本地运行博客网站</p>
-<p>hexo n 新建博客名     *新建一份博客，路径为source:\_posts</p>
+<p>hexo n 新建博客名     *新建一份博客，路径为source:\\_posts</p>
 <hr>
 <h3 id="hexo-易错点"><a href="#hexo-易错点" class="headerlink" title="hexo 易错点"></a>hexo 易错点</h3><p>文章中的title，data，tags的冒号后面均有一个空格，否则将生成失败</p>
 <hr>
@@ -419,12 +419,12 @@
 <li><strong>使用&amp;&amp;符号可以将多个命令按照顺序执行</strong></li>
 </ul>
 <p>例如：</p>
-<pre><code class="bash">hexo c &amp;&amp; hexo g &amp;&amp; hexo d
+<pre><code class="lang-bash">hexo c &amp;&amp; hexo g &amp;&amp; hexo d
 </code></pre>
 <ul>
 <li><p><strong>tags中使用多个标签</strong></p>
 <p>例如：</p>
-<pre><code class="markdow">tags: [hexo, markdown]
+<pre><code class="lang-markdow">tags: [hexo, markdown]
 //注意：冒号和逗号后面均有一个空格
 </code></pre>
 </li>
@@ -1060,6 +1060,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

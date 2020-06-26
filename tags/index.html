@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -611,20 +611,20 @@
                 </a>
                 
                 
-                <a href="/tags/markdown/" title="markdown: 1">
+                <a href="/tags/UE4/" title="UE4: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="markdown" style="background-color: #F5EEF8;">markdown
-                        <span class="tag-length">1</span>
+                            data-tagname="UE4" style="background-color: #F5EEF8;">UE4
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/UE4/" title="UE4: 2">
+                <a href="/tags/markdown/" title="markdown: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="UE4" style="background-color: #D5F5E3;">UE4
-                        <span class="tag-length">2</span>
+                            data-tagname="markdown" style="background-color: #D5F5E3;">markdown
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -665,20 +665,20 @@
                 </a>
                 
                 
-                <a href="/tags/AI/" title="AI: 1">
+                <a href="/tags/latex-数学/" title="latex 数学: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="AI" style="background-color: #D7BDE2;">AI
+                            data-tagname="latex 数学" style="background-color: #D7BDE2;">latex 数学
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/计算机图形学/" title="计算机图形学: 2">
+                <a href="/tags/AI/" title="AI: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="计算机图形学" style="background-color: #A3E4D7;">计算机图形学
-                        <span class="tag-length">2</span>
+                            data-tagname="AI" style="background-color: #A3E4D7;">AI
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -688,6 +688,15 @@
                              chip-default "
                             data-tagname="图集" style="background-color: #85C1E9;">图集
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/计算机图形学/" title="计算机图形学: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="计算机图形学" style="background-color: #F8C471;">计算机图形学
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -714,7 +723,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"hexo","weight":1,"link":"/tags/hexo/"},{"text":"markdown","weight":1,"link":"/tags/markdown/"},{"text":"UE4","weight":2,"link":"/tags/UE4/"},{"text":"web","weight":1,"link":"/tags/web/"},{"text":"悦读","weight":1,"link":"/tags/悦读/"},{"text":"ue4","weight":3,"link":"/tags/ue4/"},{"text":"c++","weight":3,"link":"/tags/c/"},{"text":"AI","weight":1,"link":"/tags/AI/"},{"text":"计算机图形学","weight":2,"link":"/tags/计算机图形学/"},{"text":"图集","weight":1,"link":"/tags/图集/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"hexo","weight":1,"link":"/tags/hexo/"},{"text":"UE4","weight":2,"link":"/tags/UE4/"},{"text":"markdown","weight":1,"link":"/tags/markdown/"},{"text":"web","weight":1,"link":"/tags/web/"},{"text":"悦读","weight":1,"link":"/tags/悦读/"},{"text":"ue4","weight":3,"link":"/tags/ue4/"},{"text":"c++","weight":3,"link":"/tags/c/"},{"text":"latex 数学","weight":1,"link":"/tags/latex-数学/"},{"text":"AI","weight":1,"link":"/tags/AI/"},{"text":"图集","weight":1,"link":"/tags/图集/"},{"text":"计算机图形学","weight":2,"link":"/tags/计算机图形学/"}], {
         autoResize: true
     });
 </script>
@@ -1218,6 +1227,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

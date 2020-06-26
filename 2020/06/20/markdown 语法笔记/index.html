@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -549,7 +549,7 @@ GOOGLE.COM
 <p><img src="https://www.runoob.com/wp-content/uploads/2019/03/55EDFE05-5F27-458E-AFE0-7B96685C9603.jpg" alt="img"></p>
 <p>显示结果如下：</p>
 <p><img src="https://www.runoob.com/wp-content/uploads/2019/03/6DC89E5C-B41A-4938-97D8-D7D06B879F91.jpg" alt="img"></p>
-<p>你也可以用 <strong><code>`</code></strong> 包裹一段代码，并指定一种语言（也可以不指定）：</p>
+<p>你也可以用 <strong>```</strong> 包裹一段代码，并指定一种语言（也可以不指定）：</p>
 <pre><code>​```javascript
 $(document).ready(function () {
     alert(&#39;RUNOOB&#39;);
@@ -563,13 +563,11 @@ $(document).ready(function () {
 # Markdown 链接
 
 链接使用方法如下：
-
 </code></pre><p><a href="链接地址">链接名称</a></p>
 <p>或者</p>
 <p>&lt;链接地址&gt;</p>
 <pre><code>
 例如：
-
 </code></pre><p>这是一个链接 <a href="https://www.runoob.com" target="_blank" rel="noopener">菜鸟教程</a></p>
 <pre><code>
 显示结果如下：
@@ -577,7 +575,6 @@ $(document).ready(function () {
 ![img](https://www.runoob.com/wp-content/uploads/2019/03/49E6CB42-F780-4DA6-8290-DC757B51FB9A.jpg)
 
 直接使用链接地址：
-
 </code></pre><p><a href="https://www.runoob.com" target="_blank" rel="noopener">https://www.runoob.com</a></p>
 <pre><code>
 显示结果如下：
@@ -587,8 +584,7 @@ $(document).ready(function () {
 ### 高级链接
 
 我们可以通过变量来设置一个链接，变量赋值在文档末尾进行：
-
-</code></pre><p>这个链接用 1 作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">Google</a><br>这个链接用 runoob 作为网址变量 <a href="http://www.runoob.com/" target="_blank" rel="noopener">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
+</code></pre><p>这个链接用 1 作为网址变量 <a href="http://static.runoob.com/images/runoob-logo.png" target="_blank" rel="noopener">Google</a><br>这个链接用 runoob 作为网址变量 <a href="http://www.runoob.com/" target="_blank" rel="noopener">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
 <pre><code>
 显示结果如下：
 
@@ -597,7 +593,6 @@ $(document).ready(function () {
 # Markdown 图片
 
 Markdown 图片语法格式如下：
-
 </code></pre><p><img src="图片地址" alt="alt 属性文本"></p>
 <p><img src="图片地址" alt="alt 属性文本" title="可选标题"></p>
 <pre><code>
@@ -606,7 +601,6 @@ Markdown 图片语法格式如下：
 - 接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 &#39;title&#39; 属性的文字。
 
 使用实例：
-
 </code></pre><p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标"></p>
 <p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
 <pre><code>
@@ -615,15 +609,13 @@ Markdown 图片语法格式如下：
 ![img](https://www.runoob.com/wp-content/uploads/2019/03/A042DF30-C232-46F3-8436-7D6C35351BBD.jpg)
 
 当然，你也可以像网址那样对图片网址使用变量:
-
-</code></pre><p>这个链接用 1 作为网址变量 <a href="http://www.google.com/" target="_blank" rel="noopener">RUNOOB</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
+</code></pre><p>这个链接用 1 作为网址变量 <a href="http://static.runoob.com/images/runoob-logo.png" target="_blank" rel="noopener">RUNOOB</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
 <pre><code>
 显示结果如下：
 
 ![img](https://www.runoob.com/wp-content/uploads/2019/03/75AA6EBF-CC57-44A6-A585-5EE3DD94E42A.jpg)
 
 Markdown 还没有办法指定图片的高度与宽度，如果你需要的话，你可以使用普通的 &lt;img&gt; 标签。
-
 </code></pre><p><img src="http://static.runoob.com/images/runoob-logo.png" width="50%"></p>
 <pre><code>
 显示结果如下：
@@ -635,8 +627,8 @@ Markdown 还没有办法指定图片的高度与宽度，如果你需要的话�
 Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来分隔表头和其他行。
 
 语法格式如下：
-
-</code></pre><table>
+</code></pre><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>表头</th>
@@ -654,6 +646,7 @@ Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来
 </tr>
 </tbody>
 </table>
+</div>
 <pre><code>
 以上代码显示结果如下：
 
@@ -670,8 +663,8 @@ Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来
 - **:-:** 设置内容和标题栏居中对齐。
 
 实例如下：
-
-</code></pre><table>
+</code></pre><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:left">左对齐</th>
@@ -692,6 +685,7 @@ Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来
 </tr>
 </tbody>
 </table>
+</div>
 <pre><code>
 以上代码显示结果如下：
 
@@ -704,7 +698,6 @@ Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来
 不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。
 
 目前支持的 HTML 元素有：`&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;`等 ，如：
-
 </code></pre><p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
 <pre><code>
 输出结果为：
@@ -714,7 +707,6 @@ Markdown 制作表格使用 **|** 来分隔不同的单元格，使用 **-** 来
 ### 转义
 
 Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：
-
 </code></pre><p><strong>文本加粗</strong><br>** 正常显示星号 **</p>
 <pre><code>
 输出结果为：
@@ -722,7 +714,6 @@ Markdown 使用了很多特殊符号来表示特定的意义，如果需要显�
 ![img](https://www.runoob.com/wp-content/uploads/2019/03/CA0E0162-0C48-41CD-B57A-CB32A4287C02.jpg)
 
 Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
-
 </code></pre><p>\   反斜线<br>`   反引号</p>
 <ul>
 <li>星号<br>_   下划线<br>{}  花括号<br>[]  方括号<br>()  小括号<h1 id="井字号"><a href="#井字号" class="headerlink" title="井字号"></a>井字号</h1></li>
@@ -731,7 +722,7 @@ Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的�
 <li>加号</li>
 </ul>
 <ul>
-<li>减号<br>.   英文句点<br>!   感叹号<br><code>`</code></li>
+<li>减号<br>.   英文句点<br>!   感叹号<br>```</li>
 </ul>
 <h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
 <pre><code>$$
@@ -747,7 +738,7 @@ $$
 <p> <a href="https://www.runoob.com/markdown/md-table.html" target="_blank" rel="noopener">Markdown 表格</a></p>
 <h2 id="1-篇笔记-写笔记"><a href="#1-篇笔记-写笔记" class="headerlink" title="1 篇笔记 写笔记"></a>1 篇笔记 写笔记</h2><ol>
 <li><p>  adc</p>
-<p> <a href="mailto:928***528@qq.com" target="_blank" rel="noopener">928***528@qq.com</a></p>
+<p> 928<em>*</em>528@qq.com</p>
 <p> <a href="https://jingyan.baidu.com/article/48b558e3035d9a7f38c09aeb.html" target="_blank" rel="noopener"> 参考地址</a></p>
 <p>254</p>
 <h3 id="typora-画流程图、时序图-顺序图-、甘特图"><a href="#typora-画流程图、时序图-顺序图-、甘特图" class="headerlink" title="typora 画流程图、时序图(顺序图)、甘特图"></a>typora 画流程图、时序图(顺序图)、甘特图</h3><p>复制以下代码使用 typora 的源码模式粘贴到编辑器中查看效果：</p>
@@ -764,16 +755,14 @@ A[方形] --&gt;B(圆角)
 ​
 </code></pre><pre><code>
 **2、竖向流程图源码格式：**
-
-</code></pre><p>​<code>`</code>mermaid<br>graph TD<br>A[方形] –&gt; B(圆角)</p>
+</code></pre><p>​```mermaid<br>graph TD<br>A[方形] —&gt; B(圆角)</p>
 <pre><code>B --&gt; C{条件a}
 C --&gt; |a=1| D[结果1]
 C --&gt; |a=2| E[结果2]
 F[竖向流程图]
-</code></pre><p>​<code>`</code></p>
+</code></pre><p>​```</p>
 <pre><code>
 **3、标准流程图源码格式：**
-
 </code></pre><p>​<code>flow
 st=&gt;start: 开始框
 op=&gt;operation: 处理框
@@ -787,7 +776,6 @@ cond(no)-&gt;sub1(right)-&gt;op
 ​</code></p>
 <pre><code>
 **4、标准流程图源码格式（横向）：**
-
 </code></pre><p>​<code>flow
 st=&gt;start: 开始框
 op=&gt;operation: 处理框
@@ -801,7 +789,6 @@ cond(no)-&gt;sub1(right)-&gt;op
 ​</code></p>
 <pre><code>
 **5、UML时序图源码样例：**
-
 </code></pre><p>​<code>sequence
 对象A-&gt;对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
@@ -811,7 +798,6 @@ Note left of 对象A: 对象A的描述(提示)
 ​</code></p>
 <pre><code>
 **6、UML时序图源码复杂样例：**
-
 </code></pre><p>​<code>sequence
 Title: 标题：复杂使用
 对象A-&gt;对象B: 对象B你好吗?（请求）
@@ -827,8 +813,7 @@ Note right of C: 没人陪我玩
 ​</code></p>
 <pre><code>
 **7、UML标准时序图样例：**
-
-</code></pre><p>​<code>`</code>mermaid<br>%% 时序图例子,-&gt; 直线，–&gt;虚线，-&gt;&gt;实线箭头<br>  sequenceDiagram</p>
+</code></pre><p>​```mermaid<br>%% 时序图例子,-&gt; 直线，—&gt;虚线，-&gt;&gt;实线箭头<br>  sequenceDiagram</p>
 <pre><code>participant 张三
 participant 李四
 张三-&gt;王五: 王五你好吗？
@@ -839,11 +824,10 @@ Note right of 王五: 合理 食物 &lt;br/&gt;看医生...
 李四--&gt;&gt;张三: 很好!
 王五-&gt;李四: 你怎么样?
 李四--&gt;王五: 很好!
-</code></pre><p>​<code>`</code></p>
+</code></pre><p>​```</p>
 <pre><code>
 **8、甘特图样例：**
-
-</code></pre><p>​<code>`</code>mermaid<br>%% 语法示例</p>
+</code></pre><p>​```mermaid<br>%% 语法示例</p>
 <pre><code>    gantt
     dateFormat  YYYY-MM-DD
     title 软件开发甘特图
@@ -862,7 +846,8 @@ Note right of 王五: 合理 食物 &lt;br/&gt;看医生...
     功能测试                              :active, a1, after des3, 3d
     压力测试                               :after a1  , 20h
     测试报告                               : 48h
-</code></pre><p>​<code></code></p>
+</code></pre><p>​<code>
+</code></p>
 <p>效果图如下：</p>
 <p><img src="https://www.runoob.com/wp-content/uploads/2019/03/md-flow.png" alt="img"></p>
 </li>
@@ -1497,6 +1482,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

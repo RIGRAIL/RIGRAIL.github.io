@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -391,7 +391,7 @@
     <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
   <div class="post-entry">
     <div class="feature">
-      <a href="/2020/06/25/莉兹与青鸟同人图/">
+      <a href="/2020/06/26/latex-符号命令daquan/">
         <div class="overlay">
           <i class="iconfont icon-text">
           </i>
@@ -400,18 +400,18 @@
       </a>
     </div>
     <h1 class="entry-title">
-    <a href="/2020/06/25/莉兹与青鸟同人图/">
-    莉兹与青鸟同人图</a>
+    <a href="/2020/06/26/latex-符号命令daquan/">
+    latex符号命令大全</a>
     </h1>
     <div class="p-time">
       <i class="iconfont icon-time">
       </i>
-    2020-6-25</div>
+    2020-6-26</div>
     <p>
-    莉兹与青鸟的同人图，作者LYY</p>
+    记录latex的符号和命名，很实用。</p>
     <footer class="entry-footer">
       <div class="post-more">
-        <a href="/2020/06/25/莉兹与青鸟同人图/">
+        <a href="/2020/06/26/latex-符号命令daquan/">
           <i class="iconfont icon-caidan">
           </i>
         </a>
@@ -667,7 +667,7 @@
     <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
   <div class="post-entry">
     <div class="feature">
-      <a href="/2020/06/25/莉兹与青鸟同人图/">
+      <a href="/2020/06/26/latex-符号命令daquan/">
         <div class="overlay">
           <i class="iconfont icon-text">
           </i>
@@ -676,18 +676,18 @@
       </a>
     </div>
     <h1 class="entry-title">
-    <a href="/2020/06/25/莉兹与青鸟同人图/">
-    莉兹与青鸟同人图</a>
+    <a href="/2020/06/26/latex-符号命令daquan/">
+    latex符号命令大全</a>
     </h1>
     <div class="p-time">
       <i class="iconfont icon-time">
       </i>
-    2020-6-25</div>
+    2020-6-26</div>
     <p>
-    莉兹与青鸟的同人图，作者LYY</p>
+    记录latex的符号和命名，很实用。</p>
     <footer class="entry-footer">
       <div class="post-more">
-        <a href="/2020/06/25/莉兹与青鸟同人图/">
+        <a href="/2020/06/26/latex-符号命令daquan/">
           <i class="iconfont icon-caidan">
           </i>
         </a>
@@ -1428,6 +1428,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

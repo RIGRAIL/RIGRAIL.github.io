@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -620,6 +620,15 @@
                 </a>
                 
                 
+                <a href="/categories/图集/" title="图集: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">图集
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
             </div>
         </div>
     </div>
@@ -662,7 +671,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"笔记","max":11},{"name":"技术","max":11}],
+            indicator: [{"name":"笔记","max":9},{"name":"技术","max":9},{"name":"图集","max":9}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -673,7 +682,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [3,8],
+                    value : [3,8,1],
                     name : '文章分类数量'
                 }
             ]
@@ -1183,6 +1192,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

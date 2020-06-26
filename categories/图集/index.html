@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">二维图形变换 | 诌言呓语</title>
+  <title itemprop="name">Category: 图集 | 诌言呓语</title>
   
     <link rel="shortcut icon" href="/images/avatar.ico">
   
@@ -369,358 +369,105 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      二维图形变换</h1>
-      <p class="entry-census">
-        <span>
-          <a href="somniloquy.cn">
-            <img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/avatar.ico">
-          </a>
-        </span>
-        <span>
-          <a href="somniloquy.cn">诌言呓语</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2020-6-25<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/D2B39B486E2F5FE29EB7CB636A612E3B.jpg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">图集</h1>
+    <span class="cat-des">
+      <p>自己喜欢的一些图片</p>
+    </span>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h2 id="二维图形变换基本原理"><a href="#二维图形变换基本原理" class="headerlink" title="二维图形变换基本原理"></a>二维图形变换基本原理</h2><h3 id="变换的特点"><a href="#变换的特点" class="headerlink" title="变换的特点"></a>变换的特点</h3><p>一、图形变换了，但原图形的连边规则没有改变</p>
-<p>二、图形的变换，是顶点位置的改变决定的</p>
-<p><strong>变换图形就是要变换图形的几何关系，即改变顶点的坐标；同时，保持图形的原拓补关系不变</strong></p>
-<h3 id="仿射变换"><a href="#仿射变换" class="headerlink" title="仿射变换"></a>仿射变换</h3><p>仿射变换（Affine Transformation 或 Affine Map）是一种二维坐标到二维坐标之间的线性变换</p>
-<ol>
-<li>平直性：直线经过变换后依然是直线</li>
-<li>平行性： 平行线依然是平行线，且直线上点的位置顺序不变</li>
-</ol>
-<hr>
-<script type="math/tex; mode=display">
-x^, = ax + by + m</script><script type="math/tex; mode=display">
-y^,=cx+dy+n</script><p>上述式子便是<strong>二维仿射变换</strong>，其中坐标 $x^,$ 和 $y^,$ 都是原始坐标x和y的线性函数。</p>
-<p>参数a，b，c，d，m，n是函数的系数</p>
-<hr>
-<h3 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h3><ul>
-<li>【简而言之，就是用三维向量表示二维向量， 或者一般而言，用一个n+1维的向量表示一个n 维向量的方法称为<strong>齐次坐标表示法</strong>】</li>
-</ul>
-<p>在二维平面内，我们是用一对坐标值（x，y）来表示一个点在平面内的确切位置，或者说使用一个向量（x，y）来标定一个点的位置</p>
-<p>加入变换前的点坐标为（x，y），变换后的点坐标为（x<em>，y</em>），这个变换过程可以写成如下矩阵形式：</p>
-<p>$\begin{bmatrix}x^\star,y^\star\end{bmatrix} = \begin{bmatrix}x,y\end{bmatrix}\cdot M $</p>
-<p><strong>M 为变换矩阵，即：</strong></p>
-<script type="math/tex; mode=display">\left[\begin{array}{llll}
-x^{*}, & y^{*}
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right]\left[\begin{array}{ll}
-a_{1} & a_{2} \\
-b_{1} & b_{2} \\
-c_{1} & c_{2}
-\end{array}\right]</script><p><strong>对于向量（x，y，1），可以在几何意义上理解为是第三位为常数的平面上的一个二维向量</strong></p>
-<p>这种用三维向量表示二维向量， 或者一般而言，用一个n+1维的向量表示一个n 维向量的方法称为<strong>齐次坐标表示法</strong></p>
-<p>n 维向量的变换是在n + 1 维的空间进行的， 变换后的n 维结果是被反投回到感兴趣的特定的维空间内而得到的。</p>
-<p>例如：</p>
-<p>n维向量$\begin{pmatrix}p_1,p_2,…,p_n\end{pmatrix} $表示为$\begin{pmatrix}hp_1,hp_2,…,hp_n,h\end{pmatrix} $，其中h称为哑坐标。</p>
-<p><strong>普通坐标与其次坐标的关系为“一对多”：</strong></p>
-<p>普通坐标 X h $\Rightarrow$ 齐次坐标</p>
-<p>齐次坐标 / h $\Rightarrow$ 普通坐标</p>
-<p><strong>当h = 1时产生的齐次坐标称为“规格化坐标”，因为前n个坐标就是普通坐标系下的n维坐标</strong></p>
-<h4 id="为什么要采用齐次坐标？"><a href="#为什么要采用齐次坐标？" class="headerlink" title="为什么要采用齐次坐标？"></a>为什么要采用齐次坐标？</h4><p>在笛卡尔坐标系内，向量（x，y）是位于z=0的平面上的点；而向量（x，y，1）是位于z=1的等高平面上的点</p>
-<p>对于图形来说，没有实质性差别，但是却给后面矩阵运算提供了可行性和方便性</p>
-<hr>
-<h3 id="基本二维图形几何变换"><a href="#基本二维图形几何变换" class="headerlink" title="基本二维图形几何变换"></a>基本二维图形几何变换</h3><h4 id="一、平移变换"><a href="#一、平移变换" class="headerlink" title="一、平移变换"></a>一、平移变换</h4><p><strong>平移：</strong>将一个点沿着直线移动到另一个点的重定向过程</p>
-<p>即新坐标分别在x方向和y方向增加了一个增量和，使得：</p>
-<script type="math/tex; mode=display">\left\{\begin{array}{l}
-x^{*}=x+T_{x} \\
-y^{*}=y+T_{y}
-\end{array}\right.</script><p>$T_x,T_y$为平移矢量</p>
-<p>齐次坐标计算形式为：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right]\left[\begin{array}{ccc}
-1 & 0 & 0 \\
-0 & 1 & 0 \\
-T x & T y & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x+T x & y+T y & 1
-\end{array}\right]</script><h4 id="二、-比例变换"><a href="#二、-比例变换" class="headerlink" title="二、 比例变换"></a>二、 比例变换</h4><p>比例变换：p点相对于坐标原点沿着x方向放缩$S_x$倍</p>
-<p>沿y方向放缩$S_y$倍，其中$S_x,S_y$称为比例系数</p>
-<script type="math/tex; mode=display">\left\{\begin{array}{l}
-x^{*}=x \bullet S_{x} \\
-y^{*}=y \bullet S_{y}
-\end{array}\right.</script><p>齐次坐标计算形式为：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{ccc}
-S_{x} & 0 & 0 \\
-0 & S_{y} & 0 \\
-0 & 0 & 1
-\end{array}\right]=\left[\begin{array}{lll}
-S_{x} & \bullet x & S_{y} & y
-\end{array}\right]</script><p>缩放系数$S_x$、和$S_y$可赋予任何正整数。值小于1 缩小物体的尺寸， 值大于1 则放大物体，指定为1 ， 物体尺寸就不会改变</p>
-<p>当$S_x$=$S_y$时，变换成为整体比例变换，用以下举证进行计算：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{lll}
-1 & 0 & 0 \\
-0 & 1 & 0 \\
-0 & 0 & S
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & S
-\end{array}\right]=\left[\frac{x}{S} \frac{y}{S} 1\right]</script><p>整体比例变换时，若S&gt;1,图形整体放大，0&lt;S&lt;1时，图形整体缩小；<strong>若S&lt;0，发生关于原点的对称等比变换</strong></p>
-<h4 id="三、对称变换"><a href="#三、对称变换" class="headerlink" title="三、对称变换"></a>三、对称变换</h4><p>也称为反射变换或者镜像变换，变换后的图形时原图形关于某一轴线或者原点的镜像。</p>
-<ul>
-<li>关于x轴对称</li>
-</ul>
-<p>齐次坐标计算形式：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{ccc}
-1 & 0 & 0 \\
-0 & -1 & 0 \\
-0 & 0 & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & -y & 1
-\end{array}\right]</script><ul>
-<li>关于y轴对称</li>
-</ul>
-<p>齐次坐标计算形式：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{ccc}
--1 & 0 & 0 \\
-0 & 1 & 0 \\
-0 & 0 & 1
-\end{array}\right]=\left[\begin{array}{lll}
--x & y & 1
-\end{array}\right]</script><h4 id="四、旋转变换"><a href="#四、旋转变换" class="headerlink" title="四、旋转变换"></a>四、旋转变换</h4><p>二维旋转是指将P点绕坐标原<br>点转动某个角度θ（<strong>逆时针为<br>正， 顺时针为负</strong>） 得到新的点<br>$p^*$的重定位过程</p>
-<script type="math/tex; mode=display">\left\{\begin{array}{l}
-x^{*}=r \cos (\alpha+\theta)=r \cos \alpha \cos \theta-r \sin \alpha \sin \theta \\
-y^{*}=r \sin (\alpha+\theta)=r \cos \alpha \sin \theta+r \sin \alpha \cos \theta
-\end{array}\right.</script><p><img src="https://cdn.mathpix.com/snip/images/s9qrHLzV5c6UwgmfcpjY3DX7JFCdKUZtWrMutAQBeRg.original.fullsize.png" alt></p>
-<p>因为在极坐标系中点的原始坐标为：</p>
-<script type="math/tex; mode=display">\left\{\begin{array}{l}
-x=r \cos \alpha \\
-y=r \sin \alpha
-\end{array}\right.</script><p>将该式带入上一步的公式</p>
-<p>可以得到相对于原点在位置（x，y）处的点旋转θ叫的变换方程：</p>
-<script type="math/tex; mode=display">\left\{\begin{array}{l}
-x^{*}=x \cos \theta-y \sin \theta \\
-y^{*}=x \sin \theta+y \cos \theta
-\end{array}\right.</script><p>因此，二维图形绕原点逆时针旋转θ角的齐次坐标计算形式为：</p>
-<script type="math/tex; mode=display">\begin{array}{l}
-{\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{ccc}
-\cos \theta & \sin \theta & 0 \\
--\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{array}\right]} \\
-=[x \cdot \cos \theta-y \cdot \sin \theta \quad x \cdot \sin \theta+y \cdot \cos \theta & 1]
-\end{array}</script><p>绕原点顺时针旋转θ角的齐次坐标计算形式为：</p>
-<script type="math/tex; mode=display">\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{ccc}
-\cos (-\theta) & \sin (-\theta) & 0 \\
--\sin (-\theta) & \cos (-\theta) & 0 \\
-0 & 0 & 1
-\end{array}\right]</script><h4 id="五、-错切变换"><a href="#五、-错切变换" class="headerlink" title="五、 错切变换"></a>五、 错切变换</h4><p>在图形学的应用中， 有时需要产生弹性物体的变形处理， 这就要用到错切变换</p>
-<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/994e6e7beed120a94fffda6ca5bc85d1.jpg" alt></p>
-<p>变换矩阵（齐次坐标表示法）为：</p>
-<script type="math/tex; mode=display">\begin{array}{l}
-{\left[\begin{array}{lll}
-x^{*} & y^{*} & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x & y & 1
-\end{array}\right] \cdot\left[\begin{array}{lll}
-1 & b & 0 \\
-c & 1 & 0 \\
-0 & 0 & 1
-\end{array}\right]=\left[\begin{array}{lll}
-x+c y & b x+y & 1
-\end{array}\right]}
-\end{array}</script><p>x和y的值于错切量成正比</p>
-<ul>
-<li>沿x方向错切即b=0</li>
-<li>沿y方向错切即c=0</li>
-</ul>
-<h5 id="如果二维图形不用齐次坐标表示呢？"><a href="#如果二维图形不用齐次坐标表示呢？" class="headerlink" title="如果二维图形不用齐次坐标表示呢？"></a>如果二维图形不用齐次坐标表示呢？</h5><p>即坐标用二维坐标表示，那么根据矩阵乘法的定义，只有第一个矩阵的列数和第二个矩阵的行数相等时才能相乘，在矩阵运算中将有诸多不便，所以用齐次坐标表示法，用三维变量表示二维变量，如此一来，矩阵都为3X3矩阵，计算方式将统一。</p>
-<h4 id="六、复合图形变换"><a href="#六、复合图形变换" class="headerlink" title="六、复合图形变换"></a>六、复合图形变换</h4><p>复合变换是指图形作一次以上的几何变换， 变换结果是每次的变换矩阵相乘</p>
-<p>例如二维复合比例平移：</p>
-<p><img src="https://cdn.mathpix.com/snip/images/tHH4hTCgXvQU0lbCxTCwacWtzKaKoM5bw96gr2kT4FE.original.fullsize.png" alt></p>
-<p><strong>特别注意！进行复合变换时，需要注意的时矩阵相乘的顺序！由于矩阵乘法不满足交换律，通常来说$T_1 \cdot T_2!=T_2\cdot T_1$,即矩阵相乘顺序不可交换！</strong></p>
-<h3 id="坐标系之间的变换"><a href="#坐标系之间的变换" class="headerlink" title="坐标系之间的变换"></a>坐标系之间的变换</h3><p>例如，将处于坐标系XOY的点p转换到$X^,O^,Y^,$坐标系中</p>
-<p><strong>思路：</strong>建立变换使$X^,O^,Y^,$与XOY坐标系重合</p>
-<p><del>然后点P采用同样的变换即可。</del></p>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/donate/AliPayQR.jpg"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/donate/WeChatQR.bmp"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/06/25/莉兹与青鸟同人图/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EZleyFXWAAERp5s.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EZleyFXWAAERp5s.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                莉兹与青鸟同人图</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/06/25/计算机图形学基本概念/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://img.xjh.me/random_img.php?return=302" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://img.xjh.me/random_img.php?return=302">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                计算机图形学基本概念</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "EJLzCAoyruzrz9o9znVPB8x3-MdYXbMMI",
-        appKey: "kAKcnoTeMgI0YcbxEdVOWDj6",
-        path: window.location.pathname,
-        placeholder: "欢迎来留言呀",
-		enableQQ: "true",
-        pageSize: "10",
-        visitor: "false",
-
-		
-		
-	emojiCDN: '//i0.hdslb.com/bfs/emote/', 
-    emojiMaps: {
-        "tv_doge": "6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png",
-        "tv_亲亲": "a8111ad55953ef5e3be3327ef94eb4a39d535d06.png",
-        "tv_偷笑": "bb690d4107620f1c15cff29509db529a73aee261.png",
-        "tv_再见": "180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png",
-        "tv_冷漠": "b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png",
-        "tv_发怒": "34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png",
-        "tv_发财": "34db290afd2963723c6eb3c4560667db7253a21a.png",
-        "tv_可爱": "9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png",
-        "tv_吐血": "09dd16a7aa59b77baa1155d47484409624470c77.png",
-        "tv_呆": "fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png",
-        "tv_呕吐": "9f996894a39e282ccf5e66856af49483f81870f3.png",
-        "tv_困": "241ee304e44c0af029adceb294399391e4737ef2.png",
-        "tv_坏笑": "1f0b87f731a671079842116e0991c91c2c88645a.png",
-        "tv_大佬": "093c1e2c490161aca397afc45573c877cdead616.png",
-        "tv_大哭": "23269aeb35f99daee28dda129676f6e9ea87934f.png",
-        "tv_委屈": "d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png",
-        "tv_害羞": "a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png",
-        "tv_尴尬": "7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png",
-        "tv_微笑": "70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png",
-        "tv_思考": "90cf159733e558137ed20aa04d09964436f618a1.png",
-        "tv_惊吓": "0d15c7e2ee58e935adc6a7193ee042388adc22af.png",
-    }
-		
-      })
-  }
-</script>
-
-
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="somniloquy.cn" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/avatar.ico" itemprop="image" alt="诌言呓语" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="somniloquy.cn" itemprop="url" rel="author">诌言呓语</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/06/25/莉兹与青鸟同人图/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EZleyFXWAAERp5s.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/06/25/莉兹与青鸟同人图/">
+    莉兹与青鸟同人图</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-6-25</div>
+    <p>
+    莉兹与青鸟的同人图，作者LYY</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/06/25/莉兹与青鸟同人图/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
 
+<!-- 
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2020/06/25/莉兹与青鸟同人图/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EZleyFXWAAERp5s.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2020/06/25/莉兹与青鸟同人图/">
+    莉兹与青鸟同人图</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2020-6-25</div>
+    <p>
+    莉兹与青鸟的同人图，作者LYY</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2020/06/25/莉兹与青鸟同人图/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-  </script>
-
-
+ -->
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

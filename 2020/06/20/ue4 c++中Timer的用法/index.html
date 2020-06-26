@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -408,21 +408,18 @@
           <p>timer是实现游戏逻辑的一个非常重要的方式，这里记录一下用法，很简单。</p>
 <a id="more"></a>
 <p><strong>header</strong></p>
-<pre><code class="cpp">//定义一个timerhandle
+<pre><code class="lang-cpp">//定义一个timerhandle
 FTimerHandle Timer;
-
 </code></pre>
 <p><strong>CPP</strong></p>
 <blockquote>
 <p><strong>例子一：循环执行函数</strong></p>
-<pre><code class="cpp">//每0，2秒执行以此showEmotion函数
+<pre><code class="lang-cpp">//每0，2秒执行以此showEmotion函数
 GetWorld()-&gt;GetTimerManager().SetTimer(Timer, this, &amp;UCharacter_Base::ShowEmotion, 0.2f, true);
 //当然，getWorld()-&gt;GetTimerManager()可以用getWorldTimerManager()替代
 </code></pre>
-</blockquote>
-<blockquote>
 <p><strong>例子二：用来实现蓝图中的delay宏类似的功能</strong></p>
-<pre><code class="cpp">//延迟0.2秒后执行showEmotion函数，只执行一次
+<pre><code class="lang-cpp">//延迟0.2秒后执行showEmotion函数，只执行一次
 GetWorld()-&gt;GetTimerManager().SetTimer(Timer, this, &amp;UCharacter_Base::ShowEmotion, 0.2f, false);
 //当然，getWorld()-&gt;GetTimerManager()可以用getWorldTimerManager()替代
 </code></pre>
@@ -460,7 +457,7 @@ GetWorld()-&gt;GetTimerManager().SetTimer(Timer, this, &amp;UCharacter_Base::Sho
           
             <a href="/2020/06/25/计算机图形学基本概念/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://img.xjh.me/random_img.php?return=302" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://img.xjh.me/random_img.php?return=302">
               </div>
               <span class="label">
               Previous Post</span>
@@ -1057,6 +1054,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

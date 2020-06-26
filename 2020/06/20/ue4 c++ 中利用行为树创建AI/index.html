@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -406,9 +406,12 @@
         
         <div class="entry-content">
           <h5 id="下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点"><a href="#下面将利用实际例子来讲解如何在c-中利用行为树创建AI，顺带记录一些易犯糊涂的点" class="headerlink" title="下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点"></a>下面将利用实际例子来讲解如何在c++ 中利用行为树创建AI，顺带记录一些易犯糊涂的点</h5><a id="more"></a>
-<h3 id="一-在build-cs中添加modular"><a href="#一-在build-cs中添加modular" class="headerlink" title="一    在build.cs中添加modular"></a>一    在build.cs中添加modular</h3><p>在yourProject.build.cs<a href="yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs">^路径说明</a>中添加两个模块，”AIModule”和 “GameplayTasks”。</p>
+<h3 id="一-在build-cs中添加modular"><a href="#一-在build-cs中添加modular" class="headerlink" title="一    在build.cs中添加modular"></a>一    在build.cs中添加modular</h3><p>在yourProject.build.cs<sup><a href="#fn_路径说明" id="reffn_路径说明">路径说明</a></sup>中添加两个模块，”AIModule”和 “GameplayTasks”。</p>
+<blockquote id="fn_路径说明">
+<sup>路径说明</sup>. yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs<a href="#reffn_路径说明" title="Jump back to footnote [路径说明] in the text."> &#8617;</a>
+</blockquote>
 <p>例如：</p>
-<pre><code class="cpp">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+<pre><code class="lang-cpp">// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
 
@@ -429,7 +432,7 @@ public class MyProject : ModuleRules
 <h3 id="二-创建你的AI-Controller"><a href="#二-创建你的AI-Controller" class="headerlink" title="二    创建你的AI Controller"></a>二    创建你的AI Controller</h3><p>继承AIController的一个类，没什么好说的</p>
 <h3 id="三-在要使用AI的角色类中定义行为树"><a href="#三-在要使用AI的角色类中定义行为树" class="headerlink" title="三    在要使用AI的角色类中定义行为树"></a>三    在要使用AI的角色类中定义行为树</h3><p>例如：</p>
 <p><strong>头文件</strong>：</p>
-<pre><code class="cpp">// Fill out your copyright notice in the Description page of Project Settings.
+<pre><code class="lang-cpp">// Fill out your copyright notice in the Description page of Project Settings.
 #pragma once
 #include &quot;CoreMinimal.h&quot;
 #include &quot;Character_Base.h&quot;
@@ -462,7 +465,7 @@ public:
 };
 </code></pre>
 <p><strong>CPP文件</strong></p>
-<pre><code class="cpp">// Fill out your copyright notice in the Description page of Project Settings.
+<pre><code class="lang-cpp">// Fill out your copyright notice in the Description page of Project Settings.
 #include &quot;Enemy_Base.h&quot;
 #include &quot;Kismet/GameplayStatics.h&quot;
 #include &quot;../Controller/AIController_Base.h&quot;
@@ -489,7 +492,6 @@ void AEnemy_Base::BeginPlay()
         }
     }
 }
-
 </code></pre>
 <h3 id="四-创建你的行为树和黑板"><a href="#四-创建你的行为树和黑板" class="headerlink" title="四    创建你的行为树和黑板"></a>四    创建你的行为树和黑板</h3><p>在编辑器页面中就可以创建这两者，然后自定义你的行为树和黑板，然后将你的AI角色指定行为树</p>
 <h3 id="五-自定义你的行为树任务（BTTaskNode）"><a href="#五-自定义你的行为树任务（BTTaskNode）" class="headerlink" title="五    自定义你的行为树任务（BTTaskNode）"></a>五    自定义你的行为树任务（BTTaskNode）</h3><p>当然，你可以直接用蓝图创建。</p>
@@ -500,9 +502,7 @@ void AEnemy_Base::BeginPlay()
 </ul>
 <blockquote>
 <p><strong>两个比较重要的虚函数</strong></p>
-</blockquote>
-<blockquote>
-<pre><code class="cpp">protected:
+<pre><code class="lang-cpp">protected:
 //===================任务开始执行时调用===================//
     virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent&amp; OwnerComp, uint8* NodeMemory);
 
@@ -511,24 +511,18 @@ public:
 //另外，调用的帧间隔能够behaviorTreeComponent中调整
     virtual void TickTask(UBehaviorTreeComponent&amp; OwnerComp, uint8* NodeMemory, float DeltaSeconds);
 </code></pre>
-</blockquote>
-<blockquote>
 <p><strong>结束任务的函数原型</strong></p>
-<pre><code class="cpp">FinishLatentTask(UBehaviorTreeComponent&amp; OwnerComp, EBTNodeResult::Type TaskResult) const
+<pre><code class="lang-cpp">FinishLatentTask(UBehaviorTreeComponent&amp; OwnerComp, EBTNodeResult::Type TaskResult) const
 </code></pre>
-</blockquote>
-<blockquote>
 <p><strong>一些小技巧</strong></p>
 <blockquote>
 <p>获得ownerComp变量的方式</p>
-<pre><code class="cpp">UBehaviorTreeComponent* OwnerComp = Cast&lt;UBehaviorTreeComponent&gt;(GetOuter());
+<pre><code class="lang-cpp">UBehaviorTreeComponent* OwnerComp = Cast&lt;UBehaviorTreeComponent&gt;(GetOuter());
 </code></pre>
-</blockquote>
-<blockquote>
 <p>如果要使用任务蓝图中的finishTask函数，你可以将你的行为树任务的父类改为BTTask_BlueprintBase，不过官方并不建议使用这种方式，详情请看BTTask_BlueprintBase的注解</p>
 </blockquote>
 </blockquote>
-<p><a href="yourProject就是指你的项目名字。build.cs的详细路径为：Source/yourProject/yourProject.build.cs">^路径说明</a>: </p>
+<p><sup><a href="#fn_路径说明" id="reffn_路径说明">路径说明</a></sup>: </p>
 
         </div>
         <!-- .entry-content -->
@@ -1159,6 +1153,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

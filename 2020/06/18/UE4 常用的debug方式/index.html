@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -411,14 +411,14 @@
 <h2 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h2><h4 id="打印调试文本："><a href="#打印调试文本：" class="headerlink" title="打印调试文本："></a>打印调试文本：</h4><p>虚幻四中打印文本有两种方式：</p>
 <hr>
 <p>1.打印在屏幕窗口：</p>
-<pre><code class="cpp">UKismetSystemLibrary::PrintString(this, TEXT(&quot;Successed Produce NPC:%s&quot;),*produceTip); 
+<pre><code class="lang-cpp">UKismetSystemLibrary::PrintString(this, TEXT(&quot;Successed Produce NPC:%s&quot;),*produceTip);
 </code></pre>
 <p>或者</p>
-<pre><code class="cpp">GEngine-&gt;AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT(&quot;Successed Produce NPC : %s&quot;), *produceTip));
+<pre><code class="lang-cpp">GEngine-&gt;AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT(&quot;Successed Produce NPC : %s&quot;), *produceTip));
 //上述打印的文本是c语言风格的
 </code></pre>
 <p>2.打印在输出日志</p>
-<pre><code class="cpp">UE_LOG(LogTemp, Warning, TEXT(&quot;Successed Produce NPC:%s&quot;), getName().ToString());
+<pre><code class="lang-cpp">UE_LOG(LogTemp, Warning, TEXT(&quot;Successed Produce NPC:%s&quot;), getName().ToString());
 </code></pre>
 
         </div>
@@ -1050,6 +1050,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

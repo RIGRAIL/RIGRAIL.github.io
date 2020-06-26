@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -384,7 +384,7 @@
   <div id="content" class="site-content">
     <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
       <p>Somniloquy，本主题修改自<a href="https://github.com/mashirozx/Sakura/" target="_blank" rel="noopener">Sakura</a>，感谢原作者<a href="https://2heng.xin/" target="_blank" rel="noopener">Mashiro</a>。</p>
-<p>同时，感谢以下博主分享的美化教程<a href="https://www.sakura521.cn/technology/sakurameihua.html" target="_blank" rel="noopener">樱花的小坏孩</a>； <a href="https://blog.csdn.net/cungudafa" target="_blank" rel="noopener">cungudafa</a>;   <a href="https://cndrew.cn/2020/04/10/hexo-shuoshuo/" target="_blank" rel="noopener">Uncle_drew</a>;  <a href="https://flymc.cc/2020/03/28/Sakura/" target="_blank" rel="noopener">夏·祈·楓</a></p>
+<p>同时，感谢以下博主分享的教程<a href="https://www.sakura521.cn/technology/sakurameihua.html" target="_blank" rel="noopener">樱花的小坏孩</a>； <a href="https://blog.csdn.net/cungudafa" target="_blank" rel="noopener">cungudafa</a>;   <a href="https://cndrew.cn/2020/04/10/hexo-shuoshuo/" target="_blank" rel="noopener">Uncle_drew</a>;  <a href="https://flymc.cc/2020/03/28/Sakura/" target="_blank" rel="noopener">夏·祈·楓</a>;  <a href="https://www.jianshu.com/p/68e6f82d88b7" target="_blank" rel="noopener">AomanHao</a></p>
 
       <!-- .entry-content -->
       
@@ -925,6 +925,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

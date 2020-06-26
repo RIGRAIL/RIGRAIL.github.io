@@ -38,7 +38,7 @@
   mashiro_option.site_url = "https://somniloquy.cn";
   mashiro_option.v_appId = "";
   mashiro_option.v_appKey = "";
-  mashiro_option.mathjax = "0";
+  mashiro_option.mathjax = "1";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
 
@@ -556,6 +556,26 @@
                   mathpix</span>
                   <div class="linkdes">
                   数学公式编辑器，支持截图识别数学公式，需要下载</div>
+                </a>
+              </li>
+            
+              <li class="link-item">
+                <a class="link-item-inner effect-apollo" href="https://tool.lu/markdown/" title="在线的HTML格式转换为markdown格式工具，用来转载博客时很实用" target="_blank" rel="friend">
+                  <img class="lazyload" onerror="imgError(this,1)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/阿卡林.jpg" src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/阿卡林.jpg">
+                  <span class="sitename">
+                  HTML格式转换为markdown格式</span>
+                  <div class="linkdes">
+                  在线的HTML格式转换为markdown格式工具，用来转载博客时很实用</div>
+                </a>
+              </li>
+            
+              <li class="link-item">
+                <a class="link-item-inner effect-apollo" href="http://www.zuohaotu.com/" title="简单快捷的在线图片处理工具，里面的图片拼接工具能够拼长图，很好用" target="_blank" rel="friend">
+                  <img class="lazyload" onerror="imgError(this,1)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="http://www.zuohaotu.com/images/%E5%81%9A%E5%A5%BD%E5%9B%BE.png" src="http://www.zuohaotu.com/images/%E5%81%9A%E5%A5%BD%E5%9B%BE.png">
+                  <span class="sitename">
+                  简单快捷的在线图片处理工具</span>
+                  <div class="linkdes">
+                  简单快捷的在线图片处理工具，里面的图片拼接工具能够拼长图，很好用</div>
                 </a>
               </li>
             
@@ -1171,6 +1191,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 
