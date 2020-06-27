@@ -396,7 +396,7 @@
 	        <i class="fa fa-keyboard-o"></i>
 	        <span class="post-meta-item-text">  字数统计: </span>
 	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">2.1k字</span>
+	        <span class="post-count">3.1k字</span>
 	      </span>
 	    </span>
 	
@@ -405,7 +405,7 @@
 	      <span class="post-meta-item-icon">
 	        <i class="fa fa-hourglass-half"></i>
 	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">8分</span>
+	        <span class="post-count">12分</span>
 	      </span>
 	    </span>
 	</div>
@@ -602,8 +602,91 @@ x+c y & b x+y & 1
 <p><strong>特别注意！进行复合变换时，需要注意的时矩阵相乘的顺序！由于矩阵乘法不满足交换律，通常来说$T_1 \cdot T_2!=T_2\cdot T_1$,即矩阵相乘顺序不可交换！</strong></p>
 <h3 id="坐标系之间的变换"><a href="#坐标系之间的变换" class="headerlink" title="坐标系之间的变换"></a>坐标系之间的变换</h3><p>例如，将处于坐标系XOY的点p转换到$X^,O^,Y^,$坐标系中</p>
 <p><strong>思路：</strong>建立变换使$X^,O^,Y^,$与XOY坐标系重合</p>
-<p><del>然后点P采用同样的变换即可。</del></p>
+<h3 id="相对于任意参考点的二维几何变换"><a href="#相对于任意参考点的二维几何变换" class="headerlink" title="相对于任意参考点的二维几何变换"></a>相对于任意参考点的二维几何变换</h3><ol>
+<li>将固定点移动至坐标原点，此时进行平移变化</li>
+<li>针对原点进行二维几何bianhuan</li>
+<li>进行反平移，将固定点有移会原来的位置</li>
+</ol>
+<hr>
+<h2 id="二维变换矩阵"><a href="#二维变换矩阵" class="headerlink" title="二维变换矩阵"></a>二维变换矩阵</h2><p>二维空间中某点的变化可以表示成点的齐次坐标与三阶的二维变换矩阵相乘，即：</p>
+<script type="math/tex; mode=display">\left[\begin{array}{lll}
+x^\star & y^\star & 1
+\end{array}\right]=\left[\begin{array}{lll}
+x & y & 1
+\end{array}\right] \cdot T_{2 D}</script><p>​                        <script type="math/tex">=\left[\begin{array}{lll}
+x & y & 1
+\end{array}\right] \cdot\left[\begin{array}{lll}
+a & b & p \\
+c & d & q \\
+l & m & s
+\end{array}\right]</script></p>
+<p>对于三阶的二维变换矩阵，$[\begin{array}{lll}<br>a &amp; b &amp; p \\<br>c &amp; d &amp; q \\<br>l &amp; m &amp; s<br>\end{array}]$,可以分成以下四个小矩阵：</p>
+<script type="math/tex; mode=display">T_{1}=\left[\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right]$$  ,对图形进行比例，旋转，对称，错切等变换
 
+$$T_{2}=\left[\begin{array}{ll}
+l & m
+\end{array}\right]$$  ，对图形进行平移变换
+
+$$T_{3}=\left[\begin{array}{l}
+p \\
+q
+\end{array}\right]$$   ，对图形做投影变换（用于三维图形中，二维图形中p和q一般为0）
+
+$$T_{4}=[s]$$  ，对图形做整体比例变换
+
+## 二维图形几何变换的计算
+
+几何变换均可以表示为：$$P^{\star}=P \cdot T$$的形式，其中，p为变换前二维图形的规范化齐次坐标，$p^\star$为变换后的规范化齐次坐标，T为变化矩阵
+
+### 一、点的变换
+
+$$\left[\begin{array}{lll}
+x^{\star} & y^{\star} & 1
+\end{array}\right]=\left[\begin{array}{lll}
+x & y & 1
+\end{array}\right] \cdot T</script><h3 id="二、直线的变换"><a href="#二、直线的变换" class="headerlink" title="二、直线的变换"></a>二、直线的变换</h3><p>直线的变换可以通过对直线两端点进行变换，从而改变直线的位置与方向.</p>
+<script type="math/tex; mode=display">\left[\begin{array}{lll}
+x_{1}^{\star}  & y_{1}^{\star} & 1 \\
+x_{2}^{\star} & y_{2}^{\star} & 1
+\end{array}\right]=\left[\begin{array}{lll}
+x_{1} & y_{1} & 1 \\
+y_{1} & y_{2} & 1
+\end{array}\right] \cdot T</script><h3 id="三、多边形的变换"><a href="#三、多边形的变换" class="headerlink" title="三、多边形的变换"></a>三、多边形的变换</h3><p>多边形的变换是将变换矩阵作用到每个顶点的坐标位置，并且按照新的顶点坐标值和而当前属性设置来生成新的多边形。</p>
+<script type="math/tex; mode=display">p=\left[\begin{array}{lll}
+x_{1} & y_{2} & 1 \\
+x_{2} & y_{2} & 1 \\
+x_{3} & y_{3} & 1 \\
+\cdots & \cdots & \cdots \\
+x_{n} & y_{n} & 1
+\end{array}\right]</script><hr>
+<h2 id="窗口和视区"><a href="#窗口和视区" class="headerlink" title="窗口和视区"></a>窗口和视区</h2><h4 id="一、窗口和视区"><a href="#一、窗口和视区" class="headerlink" title="一、窗口和视区"></a>一、窗口和视区</h4><p>世界坐标系中要显示的区域（通常在观察坐标系内定义）称为<strong>窗口</strong></p>
+<p>窗口映射到显示器（设备）上的区域称为<strong>视区</strong></p>
+<p><strong>窗口定义显示什么；视区定义在何处显示</strong></p>
+<p><strong>世界坐标系中的一个窗口可以对应于多个视区</strong></p>
+<p>要将串口内的图形在视区中显示出来，必须经过将窗口到视区的变换处理，这种变换就是<strong>观察变换</strong>（ViewingTransformation）</p>
+<h3 id="二、观察变换"><a href="#二、观察变换" class="headerlink" title="二、观察变换"></a>二、观察变换</h3><ul>
+<li>变焦距效果</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200626192952670.bmp" alt></p>
+<p>当窗口变小时，由于视区大小不变，就可以放大图形对象的某一部分，从而观察到较大的窗口时未显示的细节</p>
+<p>当窗口变大时，由于视区大小不变，就可以“缩小图形”</p>
+<p>类似于相加的变焦处理</p>
+<ul>
+<li>整体缩放效果</li>
+</ul>
+<p>当窗口大小不变而视区大小发生变化时，得到整体放缩效果，这种放缩不改变观察对象的内容</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200626193611179.bmp" alt></p>
+<ul>
+<li>漫游效果</li>
+</ul>
+<p>当把一个固定大小的窗口在一幅大图形上移动，视区不变，产生的效果就是漫游效果</p>
+<h3 id="窗口到视区的映射"><a href="#窗口到视区的映射" class="headerlink" title="窗口到视区的映射"></a>窗口到视区的映射</h3><p>为了全部、如实地在视区中显示出窗口内的图形对象，就必须求出图形在窗口和视区间的映射关系</p>
+<p>需要根据用户所定义的参数，找到窗口和视区之间的坐标对应关系</p>
+<p><strong>窗口到视区的映射是基于一个等式，即对每一个在世界坐标下的点（x，y），产生屏幕坐标系中的一个点（Sx，Sy），是一个“保持比例”的映射</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -924,14 +1007,17 @@ x+c y & b x+y & 1
   </div> 
  </div>
  
+<!--自定义背景特效-->
+<!--漂浮彩带，点击可变换-->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script> 
+ <!--吸附线条-->
+<!--<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>-->
+ 
 </footer>
 
 <!--daovoice在线聊天工具--><!--将聊天的api的widget.daovoice.io/widget/后面的xxxx.js的xxxx改为你的daovoice的ID-->
     
   
-
-
-
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>
@@ -1264,22 +1350,6 @@ $(document).ready(function() {
   });
 </script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 
