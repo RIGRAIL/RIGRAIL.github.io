@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">ue4 c++ 中使用自定义碰撞通道 | 诌言呓语</title>
+  <title itemprop="name">三维图形几何变换 | 诌言呓语</title>
   
     <link rel="shortcut icon" href="/images/avatar.ico">
   
@@ -368,11 +368,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EVUhcAWU4AEkdAZ.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/photos/yuri/EVUhcAWU4AEkdAZ.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      ue4 c++ 中使用自定义碰撞通道</h1>
+      三维图形几何变换</h1>
       <p class="entry-census">
         <span>
           <a href="somniloquy.cn">
@@ -384,7 +384,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-6-20<span class="bull">
+        2020-6-28<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
 	  
@@ -396,7 +396,7 @@
 	        <i class="fa fa-keyboard-o"></i>
 	        <span class="post-meta-item-text">  字数统计: </span>
 	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">113字</span>
+	        <span class="post-count">4.1k字</span>
 	      </span>
 	    </span>
 	
@@ -405,7 +405,7 @@
 	      <span class="post-meta-item-icon">
 	        <i class="fa fa-hourglass-half"></i>
 	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">1分</span>
+	        <span class="post-count">16分</span>
 	      </span>
 	    </span>
 	</div>
@@ -424,22 +424,343 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>讲解ue4 c++ 中如何使用自定义的碰撞通道</p>
-<a id="more"></a>
+          <h2 id="三维图形几何变换"><a href="#三维图形几何变换" class="headerlink" title="三维图形几何变换"></a>三维图形几何变换</h2><p><strong>思考问题：</strong></p>
 <ul>
-<li><h3 id="添加碰撞通道"><a href="#添加碰撞通道" class="headerlink" title="添加碰撞通道"></a>添加碰撞通道</h3><blockquote>
-<p>在编辑器的项目设置里面，搜索channel，然后添加你的碰撞通道</p>
-</blockquote>
-</li>
+<li>如何对三维图形进行方向、尺寸、形状方面的变换</li>
+<li>三维物体如何在二维输出设备上输出</li>
 </ul>
+<hr>
+<p>三维图形的变换分为三维几何变换和投影变换：</p>
+<h3 id="一、三维几何变换"><a href="#一、三维几何变换" class="headerlink" title="一、三维几何变换"></a>一、三维几何变换</h3><p>三维物体的几何变换是在二维方法基础上增加了对Z坐标的考虑而得到的。</p>
+<p>有关二维图形几何变换的讨论，基本上都适合于三维空间。从应用角度看，三维空间几何变换直接于显示，造型有关，因此更为重要</p>
+<p>同二维变换一样，三维基本几何变换都是相对于坐标原点和坐标轴进行的几何变换：有平移、比例、旋转、对称和错切等</p>
+<hr>
+<p>与二维变换类似，引入齐次坐标表示，即：三维空间中某点的变换可以表示成点的齐次坐标与四阶的三维变换矩阵相乘，即：</p>
+<script type="math/tex; mode=display">p^{\prime}=\left[\begin{array}{llll}
+x^{\prime} & y^{\prime} & z^{\prime} & 1
+\end{array}\right]=p \cdot T_{3 D}</script><p>根据$T_{3 D}$在变换中所起的具体作用,进一边将其分成四个矩阵:</p>
+<script type="math/tex; mode=display">T_{3 D}=\left[\begin{array}{cccc}
+a & b & c & p \\
+d & e & f & q \\
+g & h & i & r \\
+l & m & n & s
+\end{array}\right]</script><script type="math/tex; mode=display">T_{1}=\left[\begin{array}{lll}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{array}\right]$$ : 对点进行比例、对称、旋转、错切变换
+
+$$T_{2}=\left[\begin{array}{lll}
+l & m & n
+\end{array}\right]$$ ： 对点进行平移变换
+
+$$T_{3}=\left[\begin{array}{l}
+p \\
+q \\
+r
+\end{array}\right]$$ ： 进行透视投影变换
+
+$$T_{4}=\left[\begin{array}{l}
+s \\\end{array}\right]$$ ： 产生整体比例变换
+
+#### 一、 平移变换
+
+**平移变换**：三维物体沿x，y，z方向上移动一个位置。物体大小与形状不变
+
+点p的平移变换矩阵表示如下：
+
+$$\begin{array}{l}
+{\left[\begin{array}{llll}
+x & y & z
+\end{array}, \right]=\left[\begin{array}{llll}
+x & y & z & 1
+\end{array}\right] \cdot T_{t}} \\
+& =\left[\begin{array}{ccccc}
+x & y & z & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+T_{x} & T_{y} & T_{z} & 1
+\end{array}\right]
+\end{array} \\ = \left[\begin{array}{llll}
+x & y & z & 1
+\end{array}\right]</script><h4 id="二、比例变换"><a href="#二、比例变换" class="headerlink" title="二、比例变换"></a>二、比例变换</h4><p>比例变换分为<strong>局部比例变换</strong>和<strong>整体比例变换</strong></p>
+<h5 id="1-局部比例变换"><a href="#1-局部比例变换" class="headerlink" title="1. 局部比例变换"></a>1. 局部比例变换</h5><p>局部比例变换由$T_{2D}$中主对接凹陷元素决定,其它元素均为零.当对x,y,z方向分别进行比例变换时,其变换的矩阵表示为:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628150618169.bmp" style="zoom: 33%;"></p>
+<h5 id="2-整体比例变换"><a href="#2-整体比例变换" class="headerlink" title="2. 整体比例变换"></a>2. 整体比例变换</h5><p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628152448756.bmp" alt></p>
+<h4 id="三、旋转变换"><a href="#三、旋转变换" class="headerlink" title="三、旋转变换"></a>三、旋转变换</h4><p>三维立体的旋转变换是指给定的三维立体绕三维空间某个指定的坐标轴旋转θ角度</p>
+<p>旋转后， 立体的空间位置将发生变化， 但形状不变</p>
+<p>θ角的正负按<strong>右手规则</strong>确定， 右手大姆指指向旋转轴的正方向，其余四个手指的指向便是旋转角的正向</p>
+<ol>
+<li><strong>绕z轴旋转θ</strong></li>
+</ol>
+<p>三维空间立体绕z轴正向旋转时，立体上各顶点的x，y坐标改变，而z坐标不变。而x，y坐标可由二维点绕原点旋转公式得到，因此可得：</p>
+<p>$x^\star = x cos\theta - y sin\theta$</p>
+<p>$y^\star = xsin\theta + ycos\theta$</p>
+<p>矩阵形式：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628153656725.bmp" alt></p>
+<ol>
+<li><strong>绕x轴旋转</strong></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628153826194.bmp" alt></p>
+<ol>
+<li><strong>绕z轴旋转</strong></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628154029527.bmp" alt></p>
+<ol>
+<li><strong>绕任意轴旋转</strong></li>
+</ol>
+<p>求绕任意直线旋转矩阵的原则：</p>
+<ol>
+<li>任意变换的问题—基本几何变换的问题</li>
+<li>绕任意直线旋转的问题—绕坐标轴旋转的问题</li>
+</ol>
+<h4 id="四、对称变换"><a href="#四、对称变换" class="headerlink" title="四、对称变换"></a>四、对称变换</h4><h5 id="1-关于坐标平面的对称"><a href="#1-关于坐标平面的对称" class="headerlink" title="1. 关于坐标平面的对称"></a>1. 关于坐标平面的对称</h5><h5 id="2-关于坐标轴对称"><a href="#2-关于坐标轴对称" class="headerlink" title="2. 关于坐标轴对称"></a>2. 关于坐标轴对称</h5><h3 id="二、投影变换"><a href="#二、投影变换" class="headerlink" title="二、投影变换"></a>二、投影变换</h3><p>投影变换：可以在二维平面上显示三维物体</p>
+<h4 id="一、平面几何投影"><a href="#一、平面几何投影" class="headerlink" title="一、平面几何投影"></a>一、平面几何投影</h4><p>投影变换就是把三维物体投射到投影面上得到二维平面图形<br>需要记住的一点是， 计算机绘图是产生三维物体的二维图象。但在屏幕上绘制图形的时候， 必须在<strong>三维坐标系</strong>下来考虑画法</p>
+<p><strong>在创建一个三维图形时， 不要考虑二维平面图象</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628155556599.bmp" alt></p>
+<p>两种投影法的本质区别在于透视投影的投影中心到投影面之间的距离是有限的； 而另一个的距离是无限的</p>
+<h5 id="1-中心（透视）投影"><a href="#1-中心（透视）投影" class="headerlink" title="1. 中心（透视）投影"></a>1. 中心（透视）投影</h5><p><strong>投影线均通过投影中心</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628155856422.bmp" alt></p>
+<p>在投影中心相对投影面确定的情况下， 空间的一个点在投影面上只存在唯一的一个投影</p>
+<p><strong>透视投影特点：</strong></p>
 <ul>
-<li><h3 id="查看碰撞通道对应的字段"><a href="#查看碰撞通道对应的字段" class="headerlink" title="查看碰撞通道对应的字段"></a>查看碰撞通道对应的字段</h3><blockquote>
-<p>项目根目录/Config/DefaultEngine.ini中搜索你添加的channel的名字，就可以查看到了碰撞通道对应的字段了。例如ECC_GameTraceChannel1</p>
-</blockquote>
-</li>
+<li>物体的投影视图由计算投影线与观察平面之焦点而得</li>
+<li>透视投影生成真实感视图但不保持相关比例（例如会被整体放大或整体缩小）</li>
 </ul>
+<h5 id="2-平行投影"><a href="#2-平行投影" class="headerlink" title="2. 平行投影"></a>2. 平行投影</h5><p>如果把透视投影的中心移至无穷远处， 则各投影线成为相互平行的直线， 这种投影法称为平行投影法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628160314669.bmp" alt></p>
+<p><strong>平行投影特点：</strong></p>
 <ul>
-<li><h3 id="然后按照正常方法使用便是了，不再累述"><a href="#然后按照正常方法使用便是了，不再累述" class="headerlink" title="然后按照正常方法使用便是了，不再累述"></a>然后按照正常方法使用便是了，不再累述</h3></li>
+<li>保持物体有关比例不变</li>
+<li>物体的各个面的精确视图由平行投影而得</li>
+<li>没有给出三维物体外表的真实性</li>
+</ul>
+<h4 id="二、平面几何投影的分类"><a href="#二、平面几何投影的分类" class="headerlink" title="二、平面几何投影的分类"></a>二、平面几何投影的分类</h4><p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628160601338.bmp" alt></p>
+<h5 id="一、平行投影："><a href="#一、平行投影：" class="headerlink" title="一、平行投影："></a>一、平行投影：</h5><p>平行投影可根据<strong>投影方向与投影面的夹角</strong>分成两类： <strong>正投影</strong>和<strong>斜投影</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628161005593.bmp" alt></p>
+<h5 id="二-、正投影："><a href="#二-、正投影：" class="headerlink" title="二 、正投影："></a>二 、正投影：</h5><p>正投影根据<strong>投影面与坐标轴的夹角</strong>又可分为两类： 三视图和正轴侧图当投影面与某一坐标轴垂直时， 得到的投影为三视图， 这时投影方向与这个坐标轴的方向一致； 否则， 得到的投影为正轴侧图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628161211591.bmp" alt></p>
+<h5 id="三、三视图："><a href="#三、三视图：" class="headerlink" title="三、三视图："></a>三、三视图：</h5><p>通常所说的三视图包括主视图、侧视图、俯视图三种，投影面分别于x轴，y轴，z轴垂直</p>
+<h6 id="三视图的计算："><a href="#三视图的计算：" class="headerlink" title="三视图的计算："></a>三视图的计算：</h6><ul>
+<li>确定三维物体上个点的位置坐标；</li>
+<li>引入齐次坐标，求出所作变换相应的变换矩阵</li>
+<li>将所作变换用矩阵表示，通过运算求三维物体上各点经变换后的点坐标值</li>
+<li>由变换后得到的二维点绘出三维物体投影后的三视图</li>
+</ul>
+<p><strong>主视图计算：</strong></p>
+<p>将三维物体xoz面（又称V面）做垂直投影，得到主视图</p>
+<p><strong>俯视图计算：</strong></p>
+<p>将三维物体xoy面（又称H面）做垂直投影，得到俯视图</p>
+<p>另外，为了使俯视图与主视图都画在一个平面内， 就要使H面绕x轴顺时针旋转90° ， 即应有一个旋转变换</p>
+<p>除此之外，为了使主视图和俯视图有一定的间距， 还要使H面沿z方向平移一段距离$-z_0$ (负$z_0$)</p>
+<p><strong>侧视图计算：</strong></p>
+<p>将三维物体yoz面（又称W面）做垂直投影，得到侧视图</p>
+<p>另外，为了使侧视图与主视图都画在一个平面内， 就要使W面绕Z轴正旋转90° ， 即应有一个旋转变换。</p>
+<p>除此之外，为了使主视图和侧视图有一定的间距， 还要使W面沿-x方向平移一段距离$-z_0$ (负$z_0$)</p>
+<h3 id="三、正轴侧图投影变换矩阵"><a href="#三、正轴侧图投影变换矩阵" class="headerlink" title="三、正轴侧图投影变换矩阵"></a>三、正轴侧图投影变换矩阵</h3><p>正轴侧分为<strong>等轴测</strong>、<strong>正二测</strong>、<strong>正三测</strong>三种：</p>
+<p><strong>等轴测：</strong>投影面与三个坐标轴之间的夹角都相等</p>
+<p><strong>正二测：</strong>投影面与两个坐标轴之间的夹角相等</p>
+<p><strong>正三测：</strong>投影面与三个坐标轴之间的夹角都不相等</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/capture_20200628163714252.bmp" alt></p>
+<p>空间物体的正轴测图是以V面为轴测投影面， 先将物体绕z轴转Y 角， 接着绕x 轴转 -α角， 最后向V面投影。其变换矩阵为：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+T_{\text {正 }} &=T_{z} \cdot T_{X} \cdot T_{V} \\
+&=\left[\begin{array}{cccc}
+\cos \gamma & \sin \gamma & 0 & 0 \\
+-\sin \gamma & \cos \gamma & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & \cos \alpha & -\sin \alpha & 0 \\
+0 & \sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right] \\
+&=\left[\begin{array}{cccc}
+\cos \gamma & 0 & -\sin \gamma & \sin \alpha & 0 \\
+-\sin \gamma & 0 & -\cos \gamma & \sin \alpha & 0 \\
+0 & 0 & \cos \alpha & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]
+\end{aligned}</script><p>即：</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l}
+x^{\star}=x \cos \gamma-y \sin \gamma \\
+y^{\star}=0 \\
+z^{\star}=-x \sin \gamma \sin \alpha-y \cos \gamma \sin \alpha+z \cos \alpha
+\end{array}\right.</script><h4 id="一、正等轴测图的变换矩阵"><a href="#一、正等轴测图的变换矩阵" class="headerlink" title="一、正等轴测图的变换矩阵"></a>一、正等轴测图的变换矩阵</h4><p>根据画法聚合学，作正等轴测投影时，γ=45°，α=-35.26°，将γ，α代入上式，其变换矩阵为：</p>
+<script type="math/tex; mode=display">T_{\text {正等轴测 }}=\left[\begin{array}{rrrr}
+0.7071 & 0 & -0.4082 & 0 \\
+-0.7071 & 0 & -0.4082 & 0 \\
+0 & 0 & 0.8165 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><h4 id="二、正二测图的变换矩阵"><a href="#二、正二测图的变换矩阵" class="headerlink" title="二、正二测图的变换矩阵"></a>二、正二测图的变换矩阵</h4><p>做正二测图时，γ=20.7°，α=19.47°，其变换矩阵为：</p>
+<script type="math/tex; mode=display">T_{\text {正二等 }}=\left[\begin{array}{cccc}
+0.9354 & 0 & -0.1178 & 0 \\
+-0.7071 & 0 & -0.3118 & 0 \\
+0 & 0 & 0.9428 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><h3 id="四、透视投影"><a href="#四、透视投影" class="headerlink" title="四、透视投影"></a>四、透视投影</h3><p>有两种基本的投影一平行投影和透视投影。它们分别用于解决基本的、彼此独立的图形表示问题</p>
+<p><strong>平行投影</strong>表示真实大小和形状的物体</p>
+<p><strong>透视投影</strong>表示真实看到的物体</p>
+<p><strong>透视投影</strong>比轴测图更富有立体感和真实感</p>
+<hr>
+<p><strong>透视投影（ Perspective Projection)</strong> 是为了获得真实三维物体的视觉效果而在二维的纸或者画布平面上绘图或者渲染的一种方法， 能逼真地反映形体的空间形象， 也称为<strong>透视图</strong></p>
+<p>透视投影是3D渲染的基本概念，也是3D程序设计的基础</p>
+<p>轴测投影图是用平行投影法形成的， 视点在无穷远处；而透视投影图是用中心投影法形成， 视点在有限远处</p>
+<h4 id="一、透视基本原理"><a href="#一、透视基本原理" class="headerlink" title="一、透视基本原理"></a>一、透视基本原理</h4><p>总所周知，位于空间的任何一个点，它之所以能被人们的眼镜看见，是因为从该点出发射出来的一条光线能够到达人们的眼镜</p>
+<h4 id="二、透视图的特点"><a href="#二、透视图的特点" class="headerlink" title="二、透视图的特点"></a>二、透视图的特点</h4><ul>
+<li>近大远小，近高远低</li>
+<li>近长远短，近疏远密</li>
+<li>互相平行的直线，其透视汇交于一点</li>
+</ul>
+<p>影响透视关系的两个因素，一个是<strong>视角</strong>，另一个是<strong>视距</strong></p>
+<ul>
+<li>视角：观察物体的角度</li>
+<li>视距：是指眼镜到物体之间的距离</li>
+</ul>
+<h4 id="三、透视图的分类"><a href="#三、透视图的分类" class="headerlink" title="三、透视图的分类"></a>三、透视图的分类</h4><p>透视图可分为<strong>一点透视</strong>，<strong>两点透视</strong>，<strong>三点透视</strong></p>
+<h5 id="1-一点透视："><a href="#1-一点透视：" class="headerlink" title="1. 一点透视："></a>1. 一点透视：</h5><p>一点透视也称为平行透视</p>
+<p>这种透视互相平行的直线汇聚成一个点， 此<br>点称为灭点， 而且只有一个。所以此种透视<br>现象叫<strong>一点透视</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/b4da27093f9fa46eba1458aab1b9b7a2.jpg" alt="一点透视"></p>
+<p>一点透视的视觉效果：简单直接、正式、稳重、有一定的纵深感</p>
+<h5 id="2-两点透视："><a href="#2-两点透视：" class="headerlink" title="2. 两点透视："></a>2. 两点透视：</h5><p><strong>两点透视</strong>也叫成角透视。通过物体旋转一定角度或者视点旋转一定角度</p>
+<p>其边线的延长线会相交于视平线上立方体左右两侧的两点（ 灭点） ， 所以叫两点透视</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/315ac5ac3bd1a94c15e9228b6fa30c4e.jpg" alt="两点透视"></p>
+<p>两点透视的视觉效果：多样性、透视感和展示性强</p>
+<h5 id="3-三点透视："><a href="#3-三点透视：" class="headerlink" title="3.三点透视："></a>3.三点透视：</h5><p>三点透视一般常见于物体的俯视和仰视，物体各个边的延长线分别消失于三个点</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/note/fda687496f1b8d97fb15e3c22bd29f66.jpg" alt="三点透视"></p>
+<p>三点透视的视觉效果：视觉角度打、冲击力强、展示性强</p>
+<hr>
+<p><strong>两点透视</strong>是三种透视关系中<strong>最常用的</strong>透视关系，其次是<strong>一点透视</strong>，而<strong>三点透视</strong>只适合表现高大物体，所以并不常用</p>
+<h4 id="四、生成透视投影图的方法"><a href="#四、生成透视投影图的方法" class="headerlink" title="四、生成透视投影图的方法"></a>四、生成透视投影图的方法</h4><script type="math/tex; mode=display">\left[\begin{array}{lllllll}
+x^{\prime} & y^{\prime} & z^{\prime} & 1
+\end{array}\right]=\left[\begin{array}{llll}
+x & y & z & 1
+\end{array}\right] \cdot \left[\begin{array}{llll}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & \frac{1}{d} \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot \left[\begin{array}{llll}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><script type="math/tex; mode=display">=\left[\begin{array}{llll}
+x & y & z & \frac{z}{d}+1
+\end{array}\right]</script><script type="math/tex; mode=display">=\left[\frac{x}{1+\frac{z}{d}} \quad \frac{y}{1+\frac{z}{d}} \quad \frac{z}{1+\frac{z}{d}} \quad 1\right]</script><p>然后再乘以像投影面投影的变换矩阵，就得到了点在画面上的投影</p>
+<script type="math/tex; mode=display">\left[\begin{array}{llll}
+x^{\prime} & y^{\prime} & z^{\prime} & 1
+\end{array}\right]=\left[\begin{array}{llll}
+x & y & z & 1
+\end{array}\right] *\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & \frac{1}{d} \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><p>若投影中心在无穷远处，则$1/d \rightarrow 0$,上式变为平行投影</p>
+<h4 id="五、透视投影的实例"><a href="#五、透视投影的实例" class="headerlink" title="五、透视投影的实例"></a>五、透视投影的实例</h4><h5 id="1-一点透视"><a href="#1-一点透视" class="headerlink" title="1.一点透视"></a>1.一点透视</h5><p>一点透视只有一个灭点。进行透视投影， 要很好地考虑图面布局，以避免三维物体的平面或直线积聚成直线或点而影响直观性。具体地说， 就是要考虑下列几点：</p>
+<ul>
+<li>三维形体于画面（投影面）的相对位置；</li>
+<li>视距，即视点（投影中心）与画面的距离</li>
+<li>视点的高度</li>
+<li>假定视点（投影中心）在z轴上（z = -d处），投影面在xoy面上，则一点透视的步骤如下：</li>
+</ul>
+<blockquote>
+<ul>
+<li>将三维物体平移到适当位置I、m、n</li>
+<li>进行透视变换</li>
+<li>最后，为了绘制方便，向xoy平面做正投影变换，将结果变换到xoy平面上</li>
+</ul>
+</blockquote>
+<p>矩阵形式表达：</p>
+<script type="math/tex; mode=display">T_{p 1}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+l & m & n & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & \frac{1}{d} \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><script type="math/tex; mode=display">\boldsymbol{T}_{p 1}=\left[\begin{array}{cccc}
+\mathbf{1} & \mathbf{O} & \mathbf{O} & \mathbf{O} \\
+\mathbf{O} & \mathbf{1} & \mathbf{O} & \mathbf{O} \\
+\mathbf{O} & \mathbf{O} & \mathbf{O} & \frac{\mathbf{1}}{d} \\
+\boldsymbol{l} & \boldsymbol{m} & \mathbf{O} & \frac{\boldsymbol{n}}{\boldsymbol{d}}+\mathbf{1}
+\end{array}\right]</script><h5 id="2-两点透视投影图的生成"><a href="#2-两点透视投影图的生成" class="headerlink" title="2.两点透视投影图的生成"></a>2.两点透视投影图的生成</h5><p>做两点透视时，通常要使物体绕y轴旋转θ角，以使物体的主要平面不平行于投影面，经透视变换后使物体产生变形，然后再向投影面做正投影</p>
+<p>构造两点透视的一般步骤如下：</p>
+<ul>
+<li>将物体平移到适当位置I、m、n</li>
+<li>将物体绕y轴旋转θ角</li>
+<li>进行透视变换</li>
+<li>最后向xoy面做正投影，即得二点透视图</li>
+</ul>
+<p>矩阵形式表达：</p>
+<script type="math/tex; mode=display">T_{p 2}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+l & m & n & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+\cos \theta & 0 & -\sin \theta & 0 \\
+0 & 1 & 0 & 0 \\
+\sin \theta & 0 & \cos \theta & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & p \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & r \\
+0 & 0 & 0 & 1
+\end{array}\right] \cdot\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right]</script><script type="math/tex; mode=display">=\left[\begin{array}{cccc}
+\cos \theta & 0 & 0 & p \cdot \cos \theta-r \sin \theta \\
+0 & 1 & 0 & 0 \\
+\sin \theta & 0 & 0 & p \cdot \sin \theta+r \cdot \cos \theta \\
+l \cdot \cos \theta+n \cdot \sin \theta & m & 0 & p(l \cdot \cos \theta+n \cdot \sin \theta)+r(n \cdot \cos \theta-l \cdot \sin \theta)+1
+\end{array}\right]</script><h5 id="3-三点透视投影图的生成"><a href="#3-三点透视投影图的生成" class="headerlink" title="3.三点透视投影图的生成"></a>3.三点透视投影图的生成</h5><p>构造三点透视的一般步骤如下：</p>
+<ul>
+<li>将物体平移到适当位置</li>
+<li>将物体绕y轴旋转θ角</li>
+<li>再绕x轴旋转α角</li>
+<li>进行透视变换</li>
+<li>向xoy面做正投影，即得三点透视图</li>
+</ul>
+<p>矩阵形式为：</p>
+<p><strong>~没推导，自己推导吧，哈哈~</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="一、三维物体几何变换"><a href="#一、三维物体几何变换" class="headerlink" title="一、三维物体几何变换"></a>一、三维物体几何变换</h4><p>三维物体的几何变换是在二维方法基础上增加了对z 坐标的考虑而得到的<br>有关二维图形几何变换的讨论， 基本上都适合于三维空间</p>
+<h4 id="二、三维物体的投影变换"><a href="#二、三维物体的投影变换" class="headerlink" title="二、三维物体的投影变换"></a>二、三维物体的投影变换</h4><p>分为<strong>平行投影</strong>和<strong>透视投影</strong>，两者的<strong>本质区别</strong>在于，透视投影的投影中心岛投影面之间的距离是有限的；而另一个的距离是无限的</p>
+<h5 id="平行投影的特点："><a href="#平行投影的特点：" class="headerlink" title="平行投影的特点："></a>平行投影的特点：</h5><ul>
+<li>平行投影保持物体的有关比例不变</li>
+<li>物体的各个面的精确视图由平行投影而得</li>
+<li>没有给出三维物体外面的真实性表示</li>
+</ul>
+<h5 id="透视投影的特点："><a href="#透视投影的特点：" class="headerlink" title="透视投影的特点："></a>透视投影的特点：</h5><ul>
+<li>能生成真实感视图</li>
+<li>不保持相关比例</li>
+<li>透视图比轴测图更富有立体感和真实感</li>
+</ul>
+<h6 id="透视投影的分类："><a href="#透视投影的分类：" class="headerlink" title="透视投影的分类："></a>透视投影的分类：</h6><ul>
+<li>一点透视</li>
+<li>二点透视</li>
+<li>三点透视</li>
 </ul>
 
         </div>
@@ -469,36 +790,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/06/20/ue4 c++中Timer的用法/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                ue4 c++ 中Timer的用法</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/06/20/Markdown 语法笔记/" rel="next">
+            <a href="/2020/06/27/UE4高级地编官方教程/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RIGRAIL/cdn/images/banner/Maple1.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://img.xjh.me/random_img.php?return=302" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://img.xjh.me/random_img.php?return=302">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                markdown 语法笔记</h3>
+                虚幻四高级地编官方教程</h3>
                 <hr>
               </div>
             </a>

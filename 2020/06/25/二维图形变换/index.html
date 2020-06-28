@@ -396,7 +396,7 @@
 	        <i class="fa fa-keyboard-o"></i>
 	        <span class="post-meta-item-text">  字数统计: </span>
 	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">3.1k字</span>
+	        <span class="post-count">3.4k字</span>
 	      </span>
 	    </span>
 	
@@ -405,7 +405,7 @@
 	      <span class="post-meta-item-icon">
 	        <i class="fa fa-hourglass-half"></i>
 	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">12分</span>
+	        <span class="post-count">13分</span>
 	      </span>
 	    </span>
 	</div>
@@ -662,7 +662,7 @@ x_{3} & y_{3} & 1 \\
 \cdots & \cdots & \cdots \\
 x_{n} & y_{n} & 1
 \end{array}\right]</script><hr>
-<h2 id="窗口和视区"><a href="#窗口和视区" class="headerlink" title="窗口和视区"></a>窗口和视区</h2><h4 id="一、窗口和视区"><a href="#一、窗口和视区" class="headerlink" title="一、窗口和视区"></a>一、窗口和视区</h4><p>世界坐标系中要显示的区域（通常在观察坐标系内定义）称为<strong>窗口</strong></p>
+<h2 id="窗口和视区"><a href="#窗口和视区" class="headerlink" title="窗口和视区"></a>窗口和视区</h2><h3 id="一、窗口和视区"><a href="#一、窗口和视区" class="headerlink" title="一、窗口和视区"></a>一、窗口和视区</h3><p>世界坐标系中要显示的区域（通常在观察坐标系内定义）称为<strong>窗口</strong></p>
 <p>窗口映射到显示器（设备）上的区域称为<strong>视区</strong></p>
 <p><strong>窗口定义显示什么；视区定义在何处显示</strong></p>
 <p><strong>世界坐标系中的一个窗口可以对应于多个视区</strong></p>
@@ -686,7 +686,22 @@ x_{n} & y_{n} & 1
 <h3 id="窗口到视区的映射"><a href="#窗口到视区的映射" class="headerlink" title="窗口到视区的映射"></a>窗口到视区的映射</h3><p>为了全部、如实地在视区中显示出窗口内的图形对象，就必须求出图形在窗口和视区间的映射关系</p>
 <p>需要根据用户所定义的参数，找到窗口和视区之间的坐标对应关系</p>
 <p><strong>窗口到视区的映射是基于一个等式，即对每一个在世界坐标下的点（x，y），产生屏幕坐标系中的一个点（Sx，Sy），是一个“保持比例”的映射</strong></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<p><strong>保持比例</strong>的性质使得这个映射有<strong>线性</strong>形式：</p>
+<script type="math/tex; mode=display">\begin{array}{l}
+s x=A * x+C \\
+s y=B * y+D
+\end{array}</script><p>其中A、B、C、D是常数</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>向量是图形处理中很重要的工具</li>
+<li>坐标系是建立图形与数之间对应联系的参考系</li>
+<li>图形和变化是计算机图形学的基础内容，是图形显示过程中不可缺少的环节</li>
+<li>齐次坐标给二维图形的矩阵运算提供了可行性和方便性</li>
+<li>物体变换：物体变换使用同一个规则改变物体上所有的点，但是保证底层坐标系不变</li>
+<li>坐标变换：坐标变换按照原坐标系统定义了一个全新的坐标系统，然后在新坐标系下表示物体上所有的点</li>
+<li>复合坐标：也称组合变换，即多种基本变换的组合。组合变换的变换矩阵时几个单独变换矩阵的乘积，由于矩阵乘法<strong>不满足交换率</strong>，因此在进行复合变换时，需要注意<strong>矩阵相乘的顺序</strong></li>
+<li>窗口视区及变换</li>
+</ul>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -1350,6 +1365,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

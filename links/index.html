@@ -420,6 +420,16 @@
                 </a>
               </li>
             
+              <li class="link-item">
+                <a class="link-item-inner effect-apollo" href="https://www.artstation.com/" title="CG视觉，艺术设计网站，有很多优秀的艺术设计" target="_blank" rel="friend">
+                  <img class="lazyload" onerror="imgError(this,1)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://www.artstation.com/assets/logo.svg" src="https://www.artstation.com/assets/logo.svg">
+                  <span class="sitename">
+                  ArtStation</span>
+                  <div class="linkdes">
+                  CG视觉，艺术设计网站，有很多优秀的艺术设计</div>
+                </a>
+              </li>
+            
           </ul>
         
           <h3 class="link-title"><span class="fake-title">2. 友情链接</span></h3>
@@ -1222,6 +1232,22 @@ $(document).ready(function() {
   });
 </script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 

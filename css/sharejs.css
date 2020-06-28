@@ -6,7 +6,7 @@ src:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/fonts/sharejs/iconfont.eot?#
 .social-share {
     display: inline-block;
   font-family: "socialshare" !important;
-  font-size: 16px;
+  font-size: 25px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
@@ -80,11 +80,11 @@ src:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/fonts/sharejs/iconfont.eot?#
 .social-share .social-share-icon {
     position: relative;
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
     border-radius: 50%;
-    line-height: 16px;
+    line-height: 20px;
     color: #666;
     text-align: center;
     vertical-align: middle;
