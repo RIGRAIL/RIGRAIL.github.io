@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-06-28T11:22:58.137Z</updated>
+  <updated>2020-06-30T14:41:35.063Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>真实感图形学</title>
+    <link href="/2020/06/30/%E7%9C%9F%E5%AE%9E%E6%84%9F%E5%9B%BE%E5%BD%A2%E5%AD%A6/"/>
+    <id>/2020/06/30/真实感图形学/</id>
+    <published>2020-06-30T06:41:10.000Z</published>
+    <updated>2020-06-30T14:41:35.063Z</updated>
+    
+    <summary type="html">
+    
+      真实感图形学的一些基础知识
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="计算机图形学 真实感图形" scheme="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6-%E7%9C%9F%E5%AE%9E%E6%84%9F%E5%9B%BE%E5%BD%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>曲面曲线-计算机图形学</title>
