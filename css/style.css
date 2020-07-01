@@ -7631,7 +7631,7 @@ img[src*="#in-center"] {
 }
 #banner_wave_1 {
     width:auto;
-    height:65px;
+    height:60px;
     background:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wave1.png") repeat-x;
     position:absolute;
     bottom:0;
@@ -7644,7 +7644,7 @@ img[src*="#in-center"] {
 }
 #banner_wave_2 {
     width:auto;
-    height:80px;
+    height:75px;
     background:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wave2.png") repeat-x;
     position:absolute;
     bottom:0;
@@ -7869,3 +7869,5 @@ td.hljs-ln-numbers {
 	.chip-active .tag-length {    color: #fff;}
 	.tag-title.center-align{    margin-top: 100px;
     text-align : center;}
+	
+	
