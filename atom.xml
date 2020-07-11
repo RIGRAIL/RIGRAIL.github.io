@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-07T19:15:16.650Z</updated>
+  <updated>2020-07-08T03:48:27.910Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>blender快捷键</title>
+    <link href="/2020/07/08/blender%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>/2020/07/08/blender快捷键/</id>
+    <published>2020-07-08T02:04:35.000Z</published>
+    <updated>2020-07-08T03:48:27.910Z</updated>
+    
+    <summary type="html">
+    
+      blender学习过程中了解的一些快捷键
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="blender" scheme="/tags/blender/"/>
+    
+  </entry>
   
   <entry>
     <title>ue4小技巧</title>
@@ -47,7 +67,7 @@
     <link href="/2020/07/06/%E5%BF%86%E7%BA%AA%E6%96%87%E8%BE%BE%E5%85%AC%E4%BD%9C/"/>
     <id>/2020/07/06/忆纪文达公作/</id>
     <published>2020-07-06T03:33:07.000Z</published>
-    <updated>2020-07-06T05:08:37.047Z</updated>
+    <updated>2020-07-08T08:46:48.065Z</updated>
     
     <summary type="html">
     
@@ -55,7 +75,7 @@
       
         
         
-          &lt;p&gt;半卷烟斗丝，一池墨染鱼。四库廿载功，千古美留名。寻巷市杂谈，草堂工真知。山雨风满楼，观奕阅世微。&lt;/p&gt;
+          &lt;p&gt;半卷烟斗丝，一池墨染鱼。四库廿载功，千古美留名。寻巷市荒诞，草堂工真知。山雨风满楼，观奕阅世微。&lt;/p&gt;
 
         
       
@@ -433,26 +453,6 @@
     
     
       <category term="UE4" scheme="/tags/UE4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo的笔记</title>
-    <link href="/2020/06/13/Hexo%20%E7%AC%94%E8%AE%B0/"/>
-    <id>/2020/06/13/Hexo 笔记/</id>
-    <published>2020-06-13T15:51:15.000Z</published>
-    <updated>2020-06-26T06:18:20.736Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;hexo 的一些小笔记&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="hexo" scheme="/tags/hexo/"/>
     
   </entry>
   
