@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-07-08T03:48:27.910Z</updated>
+  <updated>2020-07-16T04:39:03.324Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ue4骨骼重定向</title>
+    <link href="/2020/07/16/ue4%E9%AA%A8%E9%AA%BC%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    <id>/2020/07/16/ue4骨骼重定向/</id>
+    <published>2020-07-16T04:33:44.000Z</published>
+    <updated>2020-07-16T04:39:03.324Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;a按照正常流程进行骨骼重定向&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意，若想将动画完全复合新的骨骼，需要以下设置：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;在骨骼重定向选项里面，右键点击，将所有骨骼重定向选项设置为skeleton&lt;/li&gt;
+&lt;l
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="ue4 骨骼重定向" scheme="/tags/ue4-%E9%AA%A8%E9%AA%BC%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    
+  </entry>
   
   <entry>
     <title>blender快捷键</title>
@@ -426,26 +459,6 @@
     <summary type="html">
     
       &lt;p&gt;记录虚幻四中常用的debug方式&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="UE4" scheme="/tags/UE4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>UE4 如何在c++ 中使用timeline</title>
-    <link href="/2020/06/18/UE4%20c++%20%E4%B8%AD%E4%BD%BF%E7%94%A8timeline/"/>
-    <id>/2020/06/18/UE4 c++ 中使用timeline/</id>
-    <published>2020-06-18T11:51:33.000Z</published>
-    <updated>2020-06-25T14:26:03.896Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;UE4-中使用timeline&quot;&gt;&lt;a href=&quot;#UE4-中使用timeline&quot; class=&quot;headerlink&quot; title=&quot;UE4 中使用timeline&quot;&gt;&lt;/a&gt;UE4 中使用timeline&lt;/h2&gt;&lt;h3 id=&quot;timeline是比较常用的功能，蓝图中使用timeline非常的直观方便，就不再累述了，c-中使用timeline也比较简单，请看下例：&quot;&gt;&lt;a href=&quot;#timeline是比较常用的功能，蓝图中使用timeline非常的直观方便，就不再累述了，c-中使用timeline也比较简单，请看下例：&quot; class=&quot;headerlink&quot; title=&quot;timeline是比较常用的功能，蓝图中使用timeline非常的直观方便，就不再累述了，c++中使用timeline也比较简单，请看下例：&quot;&gt;&lt;/a&gt;timeline是比较常用的功能，蓝图中使用timeline非常的直观方便，就不再累述了，c++中使用timeline也比较简单，请看下例：&lt;/h3&gt;
     
     </summary>
     
